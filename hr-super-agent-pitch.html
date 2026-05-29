@@ -4,7 +4,7 @@
 <meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>超级小i — 企业 AI Native 转型的 HR 入口</title>
 <style>
-:root{--bg:#f5f5f7;--card:#fff;--t:#1d1d1f;--t2:#86868b;--a:#0071e3;--al:#e8f4fd;--ag:linear-gradient(135deg,#0071e3,#5ac8fa);--g:#34c759;--r:#ff3b30;--p:#af52de;--b:#e5e5ea;--ss:0 1px 3px rgba(0,0,0,.04);--sm:0 4px 20px rgba(0,0,0,.06);--sl:0 20px 60px rgba(0,0,0,.08);--rs:12px;--rm:20px;--rl:28px}
+:root{--bg:#f5f5f7;--card:#fff;--t:#1d1d1f;--t2:#86868b;--t3:#aeaeb2;--a:#0071e3;--al:#e8f4fd;--ag:linear-gradient(135deg,#0071e3,#5ac8fa);--g:#34c759;--r:#ff3b30;--p:#af52de;--b:#e5e5ea;--ss:0 1px 3px rgba(0,0,0,.04);--sm:0 4px 20px rgba(0,0,0,.06);--sl:0 20px 60px rgba(0,0,0,.08);--rs:12px;--rm:20px;--rl:28px}
 *{margin:0;padding:0;box-sizing:border-box}
 body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','SF Pro Text','Helvetica Neue',sans-serif;background:var(--bg);color:var(--t);line-height:1.6;-webkit-font-smoothing:antialiased}
 nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(245,245,247,.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--b);padding:0 40px;height:52px;display:flex;align-items:center;justify-content:space-between}
@@ -82,8 +82,6 @@ section{padding:80px 0}
 .capcat .ct{display:flex;flex-wrap:wrap;gap:5px}
 .capcat .ct span{padding:3px 10px;border-radius:10px;font-size:11px;background:var(--al);color:var(--a)}
 .capcat .cn{position:absolute;top:16px;right:20px;font-size:11px;font-weight:600;color:var(--t3);background:#f0f0f5;padding:2px 10px;border-radius:10px}
-.capcat::after{content:'+';position:absolute;bottom:16px;right:20px;font-size:16px;color:var(--t3);opacity:0;transition:opacity .3s;font-weight:300}
-.capcat:hover::after{opacity:1}
 
 /* SCENARIO CARDS */
 .sg-cat{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--b)}
@@ -116,7 +114,7 @@ section{padding:80px 0}
 .ctb td{padding:14px 16px;font-size:13px;border-top:1px solid var(--b);background:var(--card)}
 .ctb .l1{color:var(--g);font-weight:600}.ctb .l2{color:var(--a);font-weight:600}.ctb .l3{color:var(--p);font-weight:600}
 
-/* JOURNEY - restyled expanded details */
+/* JOURNEY */
 .jy{position:relative;padding:32px 0 0 40px;margin-top:24px}
 .jy::before{content:'';position:absolute;left:18px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--a),#5ac8fa,var(--g),var(--p),var(--r))}
 .jp{position:relative;padding:0 0 32px 40px}
@@ -131,14 +129,10 @@ section{padding:80px 0}
 .jp .ja2 span{padding:3px 10px;border-radius:10px;font-size:11px;background:#f0f0f5;color:var(--t2)}
 .jp .jdet{max-height:0;overflow:hidden;transition:max-height .5s ease}
 .jp.expanded .jdet{max-height:3000px}
-
-/* Expanded detail card - redesigned with hierarchy */
 .jp .jdet .jdc{border-radius:var(--rm);padding:20px 24px;margin-top:12px;border:1px solid var(--b);background:var(--card)}
-
 .jp .jdet .jdc .jdc-req{position:relative;padding:14px 18px;background:linear-gradient(135deg,#fef9e7,#fff3cd);border-radius:10px;margin-bottom:16px;border:1px solid #f5d49c}
 .jp .jdet .jdc .jdc-req .jdc-req-label{font-size:11px;font-weight:700;color:#92400e;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
 .jp .jdet .jdc .jdc-req .jdc-req-text{font-size:14px;font-weight:600;color:#78350f;line-height:1.5}
-
 .jp .jdet .jdc .jdc-flow{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px}
 .jp .jdet .jdc .jdc-flow .jdc-ai{flex:1;padding:14px 16px;background:var(--al);border-radius:10px;border-left:3px solid var(--a)}
 .jp .jdet .jdc .jdc-flow .jdc-ai .jdc-label{font-size:11px;font-weight:700;color:var(--a);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
@@ -147,7 +141,6 @@ section{padding:80px 0}
 .jp .jdet .jdc .jdc-flow .jdc-hu{flex:1;padding:14px 16px;background:#f0e6f6;border-radius:10px;border-left:3px solid var(--p)}
 .jp .jdet .jdc .jdc-flow .jdc-hu .jdc-label{font-size:11px;font-weight:700;color:#7c3aed;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
 .jp .jdet .jdc .jdc-flow .jdc-hu .jdc-text{font-size:13px;color:var(--t);line-height:1.7}
-
 .jp .jdet .jdc .jdc-skills-label{font-size:11px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
 .jp .jdet .jdc .jdc-skills{display:flex;flex-wrap:wrap;gap:4px}
 .jp .jdet .jdc .jdc-skills span{padding:2px 8px;border-radius:8px;font-size:11px;background:#f0f0f5;color:var(--t2)}
@@ -160,27 +153,135 @@ section{padding:80px 0}
 .ds{margin-top:24px;padding:20px 28px;background:linear-gradient(135deg,#e8f4fd,#d6ebfa);border-radius:var(--rm);text-align:center;font-size:14px;line-height:1.7;color:var(--t2)}
 .ds strong{color:var(--a)}
 
-/* ARCH + ROADMAP COMBINED */
-.ar-section{background:linear-gradient(180deg,#fff,var(--bg))}
-.ar-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:32px}
-.ar-left .arch-flow{display:flex;align-items:stretch;gap:16px;margin-top:20px;flex-wrap:wrap}
-.ar-left .ab{flex:1;min-width:130px;border-radius:var(--rm);padding:24px 20px;text-align:center}
-.ar-left .ab.s1{background:linear-gradient(135deg,#e8f4fd,#d6ebfa);border:1px solid #c4ddf7}
-.ar-left .ab.s2{background:linear-gradient(135deg,#f0e6f6,#e8d5f2);border:1px solid #dbc4e8}
-.ar-left .ab.s3{background:linear-gradient(135deg,#e6f4ea,#d2ecd8);border:1px solid #b8d9c1}
-.ar-left .ab h4{font-size:14px;font-weight:700;margin-bottom:6px}
-.ar-left .ab p{font-size:11px;color:var(--t2);line-height:1.5}
-.ar-left .aa{display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--t3);flex:0 0 20px}
+/* ===== ROADMAP — Redesigned Timeline ===== */
+.rm-section{background:linear-gradient(180deg,#fff,var(--bg))}
+.rm-timeline{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;margin-top:40px;position:relative}
+.rm-timeline::before{content:'';position:absolute;top:60px;left:16%;right:16%;height:2px;background:linear-gradient(90deg,var(--a),#5ac8fa,var(--p));z-index:0}
+.rm-phase{background:var(--card);border-radius:var(--rl);box-shadow:var(--ss);overflow:hidden;transition:all .3s;position:relative;z-index:1}
+.rm-phase:hover{box-shadow:var(--sl);transform:translateY(-3px)}
+.rm-phase .rm-top{padding:24px 24px 16px;text-align:center;position:relative}
+.rm-phase .rm-badge{display:inline-block;padding:4px 16px;border-radius:16px;font-size:11px;font-weight:700;letter-spacing:.5px;margin-bottom:14px;text-transform:uppercase}
+.rm-phase:nth-child(1) .rm-badge{background:#e8f4fd;color:var(--a)}
+.rm-phase:nth-child(2) .rm-badge{background:linear-gradient(135deg,#e8f4fd,#f0e6f6);color:#5ac8fa}
+.rm-phase:nth-child(3) .rm-badge{background:#f0e6f6;color:#7c3aed}
+.rm-phase .rm-icon{width:48px;height:48px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 10px}
+.rm-phase:nth-child(1) .rm-icon{background:var(--al);border:2px solid var(--a)}
+.rm-phase:nth-child(2) .rm-icon{background:linear-gradient(135deg,var(--al),#f0e6f6);border:2px solid #5ac8fa}
+.rm-phase:nth-child(3) .rm-icon{background:#f0e6f6;border:2px solid #7c3aed}
+.rm-phase .rm-icon svg{width:22px;height:22px;fill:none;stroke:var(--a);stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.rm-phase:nth-child(2) .rm-icon svg{stroke:#5ac8fa}
+.rm-phase:nth-child(3) .rm-icon svg{stroke:#7c3aed}
+.rm-phase h3{font-size:18px;font-weight:700;margin-bottom:4px}
+.rm-phase .rm-period{font-size:12px;color:var(--t3);font-weight:500}
+.rm-phase .rm-body{padding:0 24px 20px}
+.rm-phase .rm-desc{font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:14px;min-height:60px}
+.rm-phase .rm-milestones{display:flex;flex-direction:column;gap:8px}
+.rm-phase .rm-milestones .rm-milestone{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.5;color:var(--t)}
+.rm-phase .rm-milestones .rm-milestone .rm-m-dot{width:6px;height:6px;border-radius:50%;margin-top:5px;flex-shrink:0}
+.rm-phase:nth-child(1) .rm-milestones .rm-milestone .rm-m-dot{background:var(--a)}
+.rm-phase:nth-child(2) .rm-milestones .rm-milestone .rm-m-dot{background:#5ac8fa}
+.rm-phase:nth-child(3) .rm-milestones .rm-milestone .rm-m-dot{background:#7c3aed}
+.rm-phase .rm-target{margin:16px 24px 0;padding:12px 16px;border-radius:10px;font-size:12px;font-weight:600;text-align:center}
+.rm-phase:nth-child(1) .rm-target{background:var(--al);color:var(--a)}
+.rm-phase:nth-child(2) .rm-target{background:linear-gradient(135deg,var(--al),#f0e6f6);color:#5856d6}
+.rm-phase:nth-child(3) .rm-target{background:#f0e6f6;color:#7c3aed}
 
-.rmg{display:flex;flex-direction:column;gap:16px}
-.rm{background:var(--card);border-radius:var(--rm);padding:20px 24px;box-shadow:var(--ss);border-left:4px solid var(--t3);display:grid;grid-template-columns:1fr 2fr 1fr;align-items:center;gap:16px}
-.rm.cur{border-left-color:var(--a);background:linear-gradient(90deg,var(--al),var(--card))}
-.rm.nxt{border-left-color:#5ac8fa}
-.rm.ftr{border-left-color:var(--p)}
-.rm .rm-p{font-size:12px;font-weight:600;color:var(--a);flex-shrink:0}
-.rm .rm-body{font-size:13px;color:var(--t2);line-height:1.6}
-.rm .rm-body strong{color:var(--a)}
-.rm .rm-goal{font-size:12px;font-weight:600;color:var(--g);text-align:right;flex-shrink:0}
+/* ===== ARCHITECTURE — Technical Stack ===== */
+.arch-section{background:linear-gradient(180deg,#1d1d1f,#2c2c2e);color:#fff;padding:80px 0}
+.arch-section .lb{color:#5ac8fa}
+.arch-section .sh h2{color:#fff}
+.arch-section .sh p{color:#aeaeb2}
+.arch-diagram{margin-top:48px;display:flex;flex-direction:column;gap:0;position:relative;max-width:900px;margin-left:auto;margin-right:auto}
+.arch-layer{display:flex;align-items:stretch;position:relative}
+.arch-layer .arch-label{width:120px;flex-shrink:0;display:flex;flex-direction:column;justify-content:center;align-items:center;gap:4px;padding:12px 8px}
+.arch-layer .arch-label .al-icon{width:28px;height:28px;border-radius:6px;display:flex;align-items:center;justify-content:center}
+.arch-layer .arch-label .al-icon svg{width:14px;height:14px;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.arch-layer .arch-label .al-text{font-size:11px;font-weight:700;text-align:center;line-height:1.3;letter-spacing:.3px}
+.arch-layer .arch-content{flex:1;padding:20px 24px;border-radius:12px;position:relative;overflow:hidden}
+.arch-layer .arch-content h4{font-size:14px;font-weight:700;margin-bottom:8px}
+.arch-layer .arch-content p{font-size:12px;line-height:1.7;color:rgba(255,255,255,.7);margin-bottom:10px}
+.arch-layer .arch-content .arch-tags{display:flex;flex-wrap:wrap;gap:5px}
+.arch-layer .arch-content .arch-tags span{padding:3px 10px;border-radius:8px;font-size:11px;font-weight:500}
+/* Layer 1 - Scene Layer */
+.arch-layer.l1 .arch-label .al-icon{background:rgba(0,113,227,.2);border:1px solid rgba(0,113,227,.3)}
+.arch-layer.l1 .arch-label .al-icon svg{stroke:#5ac8fa}
+.arch-layer.l1 .arch-label .al-text{color:#5ac8fa}
+.arch-layer.l1 .arch-content{background:rgba(0,113,227,.12);border:1px solid rgba(0,113,227,.25)}
+.arch-layer.l1 .arch-content h4{color:#5ac8fa}
+.arch-layer.l1 .arch-content .arch-tags span{background:rgba(0,113,227,.2);color:#5ac8fa}
+/* Layer 2 - Knowledge Layer */
+.arch-layer.l2 .arch-label .al-icon{background:rgba(90,200,250,.15);border:1px solid rgba(90,200,250,.3)}
+.arch-layer.l2 .arch-label .al-icon svg{stroke:#5ac8fa}
+.arch-layer.l2 .arch-label .al-text{color:#5ac8fa}
+.arch-layer.l2 .arch-content{background:rgba(90,200,250,.08);border:1px solid rgba(90,200,250,.2)}
+.arch-layer.l2 .arch-content h4{color:#5ac8fa}
+.arch-layer.l2 .arch-content .arch-tags span{background:rgba(90,200,250,.15);color:#5ac8fa}
+/* Layer 3 - Skills Layer */
+.arch-layer.l3 .arch-label .al-icon{background:rgba(175,82,222,.15);border:1px solid rgba(175,82,222,.3)}
+.arch-layer.l3 .arch-label .al-icon svg{stroke:var(--p)}
+.arch-layer.l3 .arch-label .al-text{color:var(--p)}
+.arch-layer.l3 .arch-content{background:rgba(175,82,222,.08);border:1px solid rgba(175,82,222,.2)}
+.arch-layer.l3 .arch-content h4{color:var(--p)}
+.arch-layer.l3 .arch-content .arch-tags span{background:rgba(175,82,222,.15);color:var(--p)}
+/* Layer 4 - Infrastructure Layer */
+.arch-layer.l4 .arch-label .al-icon{background:rgba(174,174,178,.15);border:1px solid rgba(174,174,178,.3)}
+.arch-layer.l4 .arch-label .al-icon svg{stroke:#aeaeb2}
+.arch-layer.l4 .arch-label .al-text{color:#aeaeb2}
+.arch-layer.l4 .arch-content{background:rgba(174,174,178,.08);border:1px solid rgba(174,174,178,.2)}
+.arch-layer.l4 .arch-content h4{color:#aeaeb2}
+.arch-layer.l4 .arch-content .arch-tags span{background:rgba(174,174,178,.15);color:#aeaeb2}
+/* Arrow between layers */
+.arch-arrow{display:flex;justify-content:center;padding:2px 0;position:relative;z-index:2}
+.arch-arrow svg{width:20px;height:16px;fill:none;stroke:rgba(255,255,255,.2);stroke-width:1.5;stroke-linecap:round}
+.arch-note{margin-top:32px;padding:20px 28px;background:rgba(255,255,255,.05);border-radius:var(--rm);border:1px solid rgba(255,255,255,.1);text-align:center;max-width:800px;margin-left:auto;margin-right:auto}
+.arch-note p{font-size:13px;color:rgba(255,255,255,.6);line-height:1.7}
+.arch-note strong{color:#5ac8fa}
+.arch-caption{margin-top:24px;text-align:center;font-size:12px;color:rgba(255,255,255,.4);letter-spacing:.5px}
+
+/* ===== PRICING ===== */
+.pricing-section{background:linear-gradient(180deg,#fff,var(--bg))}
+.pr-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;margin-top:40px}
+.pr-card{background:var(--card);border-radius:var(--rl);box-shadow:var(--ss);overflow:hidden;transition:all .3s}
+.pr-card:hover{box-shadow:var(--sl);transform:translateY(-3px)}
+.pr-card.pr-featured{border:2px solid var(--a);position:relative}
+.pr-card.pr-featured .pr-featured-badge{position:absolute;top:0;right:0;background:var(--a);color:#fff;font-size:10px;font-weight:700;padding:4px 14px;border-radius:0 28px 0 12px;letter-spacing:.5px;text-transform:uppercase}
+.pr-card .pr-head{padding:28px 28px 20px;text-align:center;border-bottom:1px solid var(--b)}
+.pr-card .pr-head .pr-model-icon{width:48px;height:48px;border-radius:12px;display:flex;align-items:center;justify-content:center;margin:0 auto 12px}
+.pr-card:nth-child(1) .pr-head .pr-model-icon{background:var(--al)}
+.pr-card:nth-child(2) .pr-head .pr-model-icon{background:#f0e6f6}
+.pr-card .pr-head .pr-model-icon svg{width:24px;height:24px;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.pr-card:nth-child(1) .pr-head .pr-model-icon svg{stroke:var(--a)}
+.pr-card:nth-child(2) .pr-head .pr-model-icon svg{stroke:#7c3aed}
+.pr-card .pr-head h3{font-size:20px;font-weight:700;margin-bottom:4px}
+.pr-card .pr-head .pr-sub{font-size:13px;color:var(--t2);margin-bottom:12px}
+.pr-card .pr-head .pr-price{font-size:36px;font-weight:700;letter-spacing:-1px;color:var(--t)}
+.pr-card .pr-head .pr-price .pr-unit{font-size:14px;font-weight:400;color:var(--t2);letter-spacing:0}
+.pr-card .pr-body{padding:24px 28px 28px}
+.pr-card .pr-body h4{font-size:12px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:10px}
+.pr-card .pr-body .pr-features{display:flex;flex-direction:column;gap:10px}
+.pr-card .pr-body .pr-feature{display:flex;align-items:flex-start;gap:10px;font-size:13px;line-height:1.6;color:var(--t)}
+.pr-card .pr-body .pr-feature .pr-chk{width:16px;height:16px;border-radius:50%;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-top:2px;font-size:9px;font-weight:700}
+.pr-card:nth-child(1) .pr-body .pr-feature .pr-chk{background:var(--al);color:var(--a)}
+.pr-card:nth-child(2) .pr-body .pr-feature .pr-chk{background:#f0e6f6;color:#7c3aed}
+.pr-card .pr-body .pr-compare{margin-top:16px;padding:14px;border-radius:10px;font-size:12px;line-height:1.6;text-align:center}
+.pr-card:nth-child(1) .pr-body .pr-compare{background:var(--al);color:var(--a)}
+.pr-card:nth-child(2) .pr-body .pr-compare{background:#f0e6f6;color:#7c3aed}
+.pr-tiers{margin-top:40px;padding:28px;background:var(--card);border-radius:var(--rl);box-shadow:var(--ss);max-width:900px;margin-left:auto;margin-right:auto}
+.pr-tiers h3{font-size:17px;font-weight:700;text-align:center;margin-bottom:4px}
+.pr-tiers .pr-tiers-sub{font-size:13px;color:var(--t2);text-align:center;margin-bottom:20px}
+.pr-tiers table{width:100%;border-collapse:collapse;font-size:13px}
+.pr-tiers table th{padding:12px 16px;font-size:11px;font-weight:700;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;text-align:center;border-bottom:2px solid var(--b);background:#fafafc}
+.pr-tiers table th:first-child{text-align:left}
+.pr-tiers table td{padding:12px 16px;border-bottom:1px solid var(--b);text-align:center;color:var(--t)}
+.pr-tiers table td:first-child{text-align:left;font-weight:600;color:var(--t2)}
+.pr-tiers table tr:last-child td{border-bottom:none}
+.pr-tiers table .tag{display:inline-block;padding:2px 10px;border-radius:8px;font-size:11px;font-weight:600}
+.pr-tiers table .tag.t1{background:var(--al);color:var(--a)}
+.pr-tiers table .tag.t2{background:linear-gradient(135deg,var(--al),#f0e6f6);color:#5856d6}
+.pr-tiers table .tag.t3{background:#f0e6f6;color:#7c3aed}
+.pr-model-note{margin-top:36px;padding:20px 28px;background:linear-gradient(135deg,#e8f4fd,#f0e6f6);border-radius:var(--rm);text-align:center;max-width:800px;margin-left:auto;margin-right:auto}
+.pr-model-note p{font-size:13px;color:var(--t2);line-height:1.7}
+.pr-model-note strong{color:var(--a)}
 
 .cta{text-align:center;padding:80px 0}
 .cta h2{font-size:36px;font-weight:700;letter-spacing:-1px;margin-bottom:12px}
@@ -198,9 +299,9 @@ footer{padding:40px 0;text-align:center;font-size:12px;color:var(--t3)}
   .org-card .oc-body{padding:10px 20px 16px}
   .or{font-size:12px}
   .or .on{min-width:50px;font-size:12px}
-  .ar-grid{grid-template-columns:1fr}
-  .rm{grid-template-columns:1fr;text-align:center;gap:8px}
-  .rm .rm-goal{text-align:center}
+  .rm-timeline{grid-template-columns:1fr}
+  .rm-timeline::before{display:none}
+  .pr-grid{grid-template-columns:1fr}
 }
 @media(max-width:900px){
   .hero h1{font-size:32px};.sh h2{font-size:26px}
@@ -219,7 +320,7 @@ footer{padding:40px 0;text-align:center;font-size:12px;color:var(--t3)}
 </head>
 <body>
 
-<nav><div class="logo">超级小i</div><ul><li><a href="#org">架构</a></li><li><a href="#users">用户</a></li><li><a href="#map">能力</a></li><li><a href="#scenarios">场景</a></li><li><a href="#journey">成长</a></li><li><a href="#collab">协作</a></li><li><a href="#data">数据</a></li><li><a href="#arch-rm">路径</a></li></ul></nav>
+<nav><div class="logo">超级小i</div><ul><li><a href="#org">架构</a></li><li><a href="#users">用户</a></li><li><a href="#map">能力</a></li><li><a href="#scenarios">场景</a></li><li><a href="#journey">成长</a></li><li><a href="#collab">协作</a></li><li><a href="#data">数据</a></li><li><a href="#roadmap">路线</a></li><li><a href="#architecture">技术</a></li><li><a href="#pricing">定价</a></li></ul></nav>
 
 <div class="hero"><div class="c">
 <div class="bdg">INTERNAL PITCH · 2026</div>
@@ -465,42 +566,174 @@ footer{padding:40px 0;text-align:center;font-size:12px;color:var(--t3)}
 <div class="ds"><strong>核心能力：</strong>业务执行即数据沉淀，无需额外采集。<br><strong style="color:var(--t2)">管理者随时问：</strong>"Q2 人效？""哪个部门超编？""高潜绩效下滑？"——基于真实数据即刻回答。</div>
 </div></section>
 
-<!-- ===== ARCHITECTURE + ROADMAP COMBINED ===== -->
-<section id="arch-rm" class="ar-section"><div class="c">
-<div class="sh"><div class="lb">Architecture + Roadmap</div><h2>三层架构 + 三阶段路线</h2><p>场景层 · HR 知识层 · Skills 层，三阶段逐步构建</p></div>
-<div class="ar-grid">
-<div class="ar-left">
-<h3 style="font-size:17px;font-weight:700;margin-bottom:12px">三层智能架构</h3>
-<p style="font-size:13px;color:var(--t2);margin-bottom:16px;line-height:1.6">场景驱动 · HR 知识注入 · Skills 编排——在现有 HR 系统之上构建智能层</p>
-<div class="arch-flow">
-<div class="ab s1"><h4>场景层</h4><p>6 大场景族群<br>11 个场景模块<br>真实事件触发</p></div>
-<div class="aa">→</div>
-<div class="ab s2"><h4>HR 知识层</h4><p>15+ 角色领域知识<br>CHRO/HRBP/OD<br>TD/C&B/TA/ER/SSC</p></div>
-<div class="aa">→</div>
-<div class="ab s3"><h4>Skills 层</h4><p>50+ 原子化技能<br>灵活组合<br>多对多映射</p></div>
+<!-- ===== ROADMAP ===== -->
+<section id="roadmap" class="rm-section"><div class="c">
+<div class="sh"><div class="lb">Roadmap</div><h2>三阶段产品路线图</h2><p>从内部验证到对外输出——逐步覆盖 HR 全场景</p></div>
+<div class="rm-timeline">
+<div class="rm-phase">
+<div class="rm-top">
+<div class="rm-badge">PHASE 1</div>
+<div class="rm-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+<h3>内部验证期</h3>
+<div class="rm-period">NOW · Q3 2026</div>
+</div>
+<div class="rm-body">
+<div class="rm-desc">核心场景先跑通——合同、入职、薪酬、招聘。内部团队全面使用，积累真实案例和反馈数据。</div>
+<div class="rm-milestones">
+<div class="rm-milestone"><span class="rm-m-dot"></span>11 个场景按优先级排期，4 个核心场景先上</div>
+<div class="rm-milestone"><span class="rm-m-dot"></span>内部团队（HR + 管理层 + 全员）全面使用</div>
+<div class="rm-milestone"><span class="rm-m-dot"></span>积累真实执行数据 + 场景效果报告</div>
+<div class="rm-milestone"><span class="rm-m-dot"></span>根据内部反馈迭代优化 prompt、Skill、体验</div>
 </div>
 </div>
-<div class="ar-right">
-<h3 style="font-size:17px;font-weight:700;margin-bottom:12px">三阶段路线图</h3>
-<p style="font-size:13px;color:var(--t2);margin-bottom:16px;line-height:1.6">从内部验证到对外输出，逐步构建完整能力</p>
-<div class="rmg">
-<div class="rm cur">
-<div><span class="rm-p">NOW · Q3 2026</span></div>
-<div class="rm-body"><strong>内部验证期</strong> — 核心场景上线：合同·入职·薪酬·招聘。内部团队全面使用，积累真实案例数据</div>
-<div class="rm-goal">内部闭环</div>
+<div class="rm-target">🎯 内部闭环 · 数据验证</div>
 </div>
-<div class="rm nxt">
-<div><span class="rm-p">NEXT · Q4 2026</span></div>
-<div class="rm-body"><strong>产品打磨期</strong> — 新增绩效·人才·合规。开放集成层（飞书/钉钉/企微），3-5 家种子客户</div>
-<div class="rm-goal">验证 PMF</div>
+
+<div class="rm-phase">
+<div class="rm-top">
+<div class="rm-badge">PHASE 2</div>
+<div class="rm-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="3" x2="9" y2="21"/></svg></div>
+<h3>产品打磨期</h3>
+<div class="rm-period">NEXT · Q4 2026</div>
 </div>
-<div class="rm ftr">
-<div><span class="rm-p">FUTURE · 2027</span></div>
-<div class="rm-body"><strong>对外输出期</strong> — 分层订阅制上线。渠道搭建·白皮书·行业发布·Skill 生态持续迭代</div>
-<div class="rm-goal">ARR > 0</div>
-</div>
+<div class="rm-body">
+<div class="rm-desc">覆盖全场景矩阵，开放集成能力。3-5 家种子客户验证 PMF，积累对外输出能力。</div>
+<div class="rm-milestones">
+<div class="rm-milestone"><span class="rm-m-dot"></span>场景全覆盖：绩效·人才·合规·数据·文化·服务</div>
+<div class="rm-milestone"><span class="rm-m-dot"></span>开放集成层：飞书 / 钉钉 / 企微 / 标准 API</div>
+<div class="rm-milestone"><span class="rm-m-dot"></span>3-5 家种子客户产品化验证</div>
+<div class="rm-milestone"><span class="rm-m-dot"></span>定价模型验证 + 销售流程搭建</div>
 </div>
 </div>
+<div class="rm-target">🎯 验证 PMF · 产品就绪</div>
+</div>
+
+<div class="rm-phase">
+<div class="rm-top">
+<div class="rm-badge">PHASE 3</div>
+<div class="rm-icon"><svg viewBox="0 0 24 24"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg></div>
+<h3>对外输出期</h3>
+<div class="rm-period">FUTURE · 2027</div>
+</div>
+<div class="rm-body">
+<div class="rm-desc">分层订阅制上线，渠道搭建、品牌输出、Skill 生态持续迭代——从内部产品走向商业化产品。</div>
+<div class="rm-milestones">
+<div class="rm-milestone"><span class="rm-m-dot"></span>分层订阅：Starter / Professional / Enterprise</div>
+<div class="rm-milestone"><span class="rm-m-dot"></span>渠道合作：HR SaaS 集成商 + 咨询公司渠道</div>
+<div class="rm-milestone"><span class="rm-m-dot"></span>品牌建设：白皮书 · 行业发声 · 案例沉淀</div>
+<div class="rm-milestone"><span class="rm-m-dot"></span>Skill 生态：开放 Skill Marketplace</div>
+</div>
+</div>
+<div class="rm-target">🎯 ARR > 0 · 收入验证</div>
+</div>
+</div>
+<div style="text-align:center;margin-top:28px;padding:16px;background:var(--card);border-radius:var(--rm);box-shadow:var(--ss);max-width:700px;margin-left:auto;margin-right:auto">
+<p style="font-size:13px;color:var(--t2);line-height:1.7">每个阶段里程碑明确、可验证。不做大爆炸版本——场景逐块落地，数据逐层沉淀。</p>
+</div>
+</div></section>
+
+<!-- ===== ARCHITECTURE ===== -->
+<section id="architecture" class="arch-section"><div class="c">
+<div class="sh"><div class="lb">System Architecture</div><h2>三层技术架构</h2><p>场景驱动 · 知识注入 · Skills 编排——在现有 HR 系统之上构建 AI 智能层</p></div>
+<div class="arch-diagram">
+<div class="arch-layer l4">
+<div class="arch-label"><div class="al-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div><div class="al-text">场景层</div></div>
+<div class="arch-content">
+<h4>场景触发层 — 业务事件驱动</h4>
+<p>真实业务事件（入职申请、绩效启动、合规检查）触发对应场景编排。<br>6 大场景族群 × 11 场景模块，每个场景对应一组 Skills 组合。</p>
+<div class="arch-tags"><span>组织设计</span><span>招聘全流程</span><span>薪酬核算</span><span>绩效运营</span><span>数据驾驶舱</span><span>文化运营</span><span>员工服务</span></div>
+</div>
+</div>
+<div class="arch-arrow"><svg viewBox="0 0 20 16"><path d="M2 8h16M12 2l6 6-6 6"/></svg></div>
+<div class="arch-layer l3">
+<div class="arch-label"><div class="al-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/><path d="M20 4l2 2-2 2"/></svg></div><div class="al-text">知识层</div></div>
+<div class="arch-content">
+<h4>HR 专业知识层 — 领域知识注入</h4>
+<p>15+ HR 角色领域知识注入（CHRO/HRBP/OD/TD/C&B/TA/ER/SSC）。<br>包含方法论库（岗位评估法、九宫格、SMART……）和决策偏好人设。</p>
+<div class="arch-tags"><span>CHRO 战略</span><span>OD 组织</span><span>TD 人才</span><span>C&B 薪酬</span><span>TA 招聘</span><span>ER 合规</span><span>SSC 运营</span></div>
+</div>
+</div>
+<div class="arch-arrow"><svg viewBox="0 0 20 16"><path d="M2 8h16M12 2l6 6-6 6"/></svg></div>
+<div class="arch-layer l2">
+<div class="arch-label"><div class="al-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg></div><div class="al-text">Skills 层</div></div>
+<div class="arch-content">
+<h4>原子化 Skill 编排层 — 任务执行引擎</h4>
+<p>50+ 原子化 Skills，每个对应一个独立任务能力。<br>多对多映射：一个场景调用多个 Skills，一个 Skill 被多个场景复用。</p>
+<div class="arch-tags"><span>JD生成</span><span>简历匹配</span><span>合同生成</span><span>智能核算</span><span>九宫格引擎</span><span>离职预测</span><span>合规审计</span><span>FAQ问答</span><span>报告生成</span></div>
+</div>
+</div>
+<div class="arch-arrow"><svg viewBox="0 0 20 16"><path d="M2 8h16M12 2l6 6-6 6"/></svg></div>
+<div class="arch-layer l1">
+<div class="arch-label"><div class="al-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="9" x2="21" y2="9"/><line x1="9" y1="3" x2="9" y2="21"/></svg></div><div class="al-text">集成层</div></div>
+<div class="arch-content">
+<h4>系统集成层 — 连接现有 HR 基础设施</h4>
+<p>对接企业现有 HR 系统（钉钉/飞书/企微/HRIS）、数据库、文档库、邮件系统。<br>通过标准化 API + Webhook + 文件导入导出实现双向数据同步。</p>
+<div class="arch-tags"><span>REST API</span><span>Webhook</span><span>SSO/LDAP</span><span>文件导入</span><span>报表导出</span><span>飞书/钉钉/企微</span></div>
+</div>
+</div>
+</div>
+<div class="arch-note"><p><strong>设计原则：</strong>场景驱动而非功能驱动——每个场景解决一个真实问题。Skills 原子化保证灵活组合。知识注入保证领域专业度。集成层保证不替换现有系统。</p></div>
+<div class="arch-caption">在现有 HR 系统之上构建 AI 智能层——不替换、不侵入、可渐进</div>
+</div></section>
+
+<!-- ===== PRICING ===== -->
+<section id="pricing" class="pricing-section"><div class="c">
+<div class="sh"><div class="lb">Pricing Model</div><h2>费用预估模型</h2><p>为市场化做准备——两种定价模型对比分析</p></div>
+<div class="pr-grid">
+<div class="pr-card">
+<div class="pr-head">
+<div class="pr-model-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg></div>
+<h3>Token 用量付费</h3>
+<div class="pr-sub">按推理用量计费，多用多付</div>
+<div class="pr-price">¥0.15-0.50 <span class="pr-unit">/ 千 Token</span></div>
+</div>
+<div class="pr-body">
+<h4>适用场景</h4>
+<div class="pr-features">
+<div class="pr-feature"><span class="pr-chk">✓</span>轻量使用企业（<200 人）按需付费，无浪费</div>
+<div class="pr-feature"><span class="pr-chk">✓</span>文档生成类场景（JD/合同/制度）按量计</div>
+<div class="pr-feature"><span class="pr-chk">✓</span>低使用频率企业 pausable</div>
+<div class="pr-feature"><span class="pr-chk">✓</span>跟 DeepSeek 等 API 定价联动，灵活调整</div>
+</div>
+<div class="pr-compare">企业估算：200 人团队约 ¥3,000-8,000/月</div>
+</div>
+</div>
+<div class="pr-card pr-featured">
+<div class="pr-featured-badge">推荐</div>
+<div class="pr-head">
+<div class="pr-model-icon"><svg viewBox="0 0 24 24"><path d="M12 1v22M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+<h3>使用人次付费</h3>
+<div class="pr-sub">按活跃用户/人次计费，可预测</div>
+<div class="pr-price">¥10-30 <span class="pr-unit">/ 人 / 月</span></div>
+</div>
+<div class="pr-body">
+<h4>适用场景</h4>
+<div class="pr-features">
+<div class="pr-feature"><span class="pr-chk">✓</span>全员使用场景（FAQ/入职/查工资/证明）人头付费</div>
+<div class="pr-feature"><span class="pr-chk">✓</span>预算可预测，财务审批友好</div>
+<div class="pr-feature"><span class="pr-chk">✓</span>大企业 (>500 人) 成本可控</div>
+<div class="pr-feature"><span class="pr-chk">✓</span>可与 Token 模型混合：人头部分+文档部分按量</div>
+</div>
+<div class="pr-compare">企业估算：200 人团队约 ¥2,000-6,000/月</div>
+</div>
+</div>
+</div>
+
+<div class="pr-tiers">
+<h3>推荐分层订阅方案</h3>
+<div class="pr-tiers-sub">基于用户规模和场景数量差异化定价</div>
+<table>
+<thead><tr><th>版本</th><th>目标客户</th><th>场景覆盖</th><th>单价</th><th>估算月费</th></tr></thead>
+<tbody>
+<tr><td>Starter <span class="tag t1">起步</span></td><td>< 50 人企业</td><td>核心 4 场景（组织/入职/薪酬/FAQ）</td><td>¥10/人/月</td><td>¥500-1,500</td></tr>
+<tr><td>Professional <span class="tag t2">主流</span></td><td>50-500 人企业</td><td>8 场景（+招聘/绩效/合规/数据）</td><td>¥20/人/月</td><td>¥1,000-10,000</td></tr>
+<tr><td>Enterprise <span class="tag t3">全量</span></td><td>> 500 人或定制</td><td>全 11 场景 + API 集成 + 定制 Skill</td><td>¥30/人/月</td><td>¥15,000-50,000+</td></tr>
+</tbody>
+</table>
+</div>
+
+<div class="pr-model-note">
+<p><strong>定价策略说明：</strong>最终定价会参考市场同类产品（北森 ¥40-80/人/月、飞书 People 年付制）+ 实际运营成本。<br><strong>内部测算基础：</strong>每月约 500 万 Token 消耗（200 人团队全场景覆盖），模型调用成本占比约 30-40%。<br><strong>毛利目标：</strong> 60%+ 毛利率，前期以验证 PMF 为主，定价可灵活调整。</p>
 </div>
 </div></section>
 
@@ -517,7 +750,7 @@ function tc(e){e.classList.toggle('expanded')}
 function tj(e){e.classList.toggle('expanded')}
 function s(c){document.getElementById('scenarios').scrollIntoView({behavior:'smooth'})}
 const obs=new IntersectionObserver((e)=>{e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('fi')})},{threshold:0.1});
-document.querySelectorAll('.capcat,.sc,.rm,.ab,.dc,.uc,.jp,.org-card').forEach(e=>{e.style.opacity='0';obs.observe(e)});
+document.querySelectorAll('.capcat,.sc,.rm-phase,.arch-layer,.dc,.uc,.jp,.org-card,.pr-card,.pr-tiers').forEach(e=>{e.style.opacity='0';obs.observe(e)});
 </script>
 </body>
 </html>
