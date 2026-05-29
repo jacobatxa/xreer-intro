@@ -316,13 +316,28 @@ footer{padding:40px 0;text-align:center;font-size:12px;color:var(--t3)}
   .jp .jdet .jdc .jdc-flow .jdc-arr{transform:rotate(90deg);padding:4px 0;align-self:center}
 }
 @media(max-width:600px){.capmap{grid-template-columns:1fr}}
+
+body{overflow:hidden;height:100vh;position:fixed;width:100%;top:0;left:0}
+.slider{display:flex;flex-direction:column;height:100vh;transition:transform .6s cubic-bezier(.22,.8,.25,1)}
+.slide{min-height:100vh;height:100vh;display:flex;align-items:center;justify-content:center;overflow-y:auto;position:relative}
+.slide>.c,.slide>.hero-c{width:100%;max-width:1200px;margin:0 auto;padding:0 40px}
+.hero-c{max-width:1200px;margin:0 auto;padding:0 40px;width:100%}
+.slide-nav{position:fixed;right:20px;top:50%;transform:translateY(-50%);z-index:200;display:flex;flex-direction:column;gap:10px}
+.slide-dot{width:8px;height:8px;border-radius:50%;background:rgba(0,0,0,.2);cursor:pointer;transition:all .3s;border:none;padding:0}
+.slide-dot.active{width:24px;border-radius:4px;background:var(--a);transform:scale(1)}
+.slide-dot:hover{background:rgba(0,113,227,.5)}
+.slide-cta{position:fixed;bottom:24px;left:50%;transform:translateX(-50%);z-index:200;font-size:11px;color:var(--t3);background:rgba(245,245,247,.85);backdrop-filter:blur(10px);padding:6px 16px;border-radius:14px;border:1px solid var(--b);display:flex;align-items:center;gap:8px}
+.slide-cta .sc-key{background:var(--card);border:1px solid var(--b);border-radius:4px;padding:1px 6px;font-size:10px;font-weight:600;line-height:1.4}
+section{padding:0!important}
+.hero{padding:0!important}
+@media(max-width:768px){.slide-nav{right:10px;gap:6px}.slide-dot{width:6px;height:6px}.slide-dot.active{width:16px}}
 </style>
 </head>
 <body>
-
 <nav><div class="logo">超级小i</div><ul><li><a href="#org">架构</a></li><li><a href="#users">用户</a></li><li><a href="#map">能力</a></li><li><a href="#scenarios">场景</a></li><li><a href="#journey">成长</a></li><li><a href="#collab">协作</a></li><li><a href="#data">数据</a></li><li><a href="#roadmap">路线</a></li><li><a href="#architecture">技术</a></li><li><a href="#pricing">定价</a></li></ul></nav>
 
-<div class="hero"><div class="c">
+<div class="slider" id="slider">
+  <div class="slide" data-index="0"><div class="hero"><div class="c">
 <div class="bdg">INTERNAL PITCH · 2026</div>
 <h1>超级小i<br><span>企业 AI Native 转型的 HR 入口</span></h1>
 <p class="sub">从 HR 开始 AI 化，让企业先跑起来</p>
@@ -334,9 +349,8 @@ footer{padding:40px 0;text-align:center;font-size:12px;color:var(--t3)}
 <div class="hs"><div class="n">3类</div><div class="l">服务用户</div></div>
 </div>
 </div></div>
-
-<!-- ===== ORG COMPARE ===== -->
-<section id="org" style="background:#fff;"><div class="c">
+</div>
+  <div class="slide" data-index="1"><section id="org" style="background:#fff;"><div class="c">
 <div class="sh"><div class="lb">Org Evolution</div><h2>HR 组织架构的进化</h2><p>从全人力到人机协同——不是替代，是重新分工</p></div>
 <div class="org-wrap">
 <div class="org-compare">
@@ -375,18 +389,16 @@ footer{padding:40px 0;text-align:center;font-size:12px;color:var(--t3)}
 </div></div>
 <div class="onote">事务性工作由超级小i承担，人聚焦设计、分析、决策——这是能力升级，不是替代</div>
 </div></section>
-
-<!-- ===== USERS ===== -->
-<section id="users"><div class="c">
+</div>
+  <div class="slide" data-index="2"><section id="users"><div class="c">
 <div class="sh"><div class="lb">Who Uses It</div><h2>超级小i 服务谁？</h2><p>全员可用 · 因角色而异</p></div>
 <div class="ug">
 <div class="uc"><div class="svgi-b svgi" style="background:var(--a)"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><h3>普通员工</h3><p>自助查询薪资、合同、假期、政策。证明自动开具、信息变更、流程进度查询——7x24 随时问</p><div class="ut"><span>查工资</span><span>开证明</span><span>问政策</span><span>假期查询</span></div></div>
 <div class="uc"><div class="svgi-b svgi" style="background:#5ac8fa"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M8 10h8M8 14h5"/></svg></div><h3>团队管理者</h3><p>看团队人效、绩效进展、人员变动预警。发起招聘、调薪建议、离职面谈准备——数据驱动管理</p><div class="ut"><span>人效看板</span><span>招聘申请</span><span>绩效追踪</span><span>离职预警</span></div></div>
 <div class="uc"><div class="svgi-b svgi" style="background:var(--p)"><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9 16 14 18 21 12 17 6 21 8 14 2 9 9 9 12 2"/></svg></div><h3>战略 HR 团队</h3><p>从日常事务中解放，专注组织设计、人才战略、文化构建。超级小i提供数据、方案、建议</p><div class="ut"><span>组织设计</span><span>人才战略</span><span>数据分析</span><span>制度搭建</span></div></div>
 </div></div></section>
-
-<!-- ===== CAPABILITY MAP ===== -->
-<section id="map" style="background:#fff;"><div class="c">
+</div>
+  <div class="slide" data-index="3"><section id="map" style="background:#fff;"><div class="c">
 <div class="sh"><div class="lb">Capability Map</div><h2>超级小i 能力全景</h2><p>6 大场景族群 x 11 个场景模块 x 50+ Skills</p></div>
 <div class="capmap">
 <div class="capcat" onclick="s('org')"><div class="svgi-l svgi" style="background:var(--a)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div><h3>组织与制度</h3><div class="cd">从 0 搭建到 IPO 完善制度体系</div><div class="ct"><span>组织设计</span><span>岗位评估</span><span>制度生成</span><span>SOP引擎</span></div><span class="cn">2 场景</span></div>
@@ -397,9 +409,8 @@ footer{padding:40px 0;text-align:center;font-size:12px;color:var(--t3)}
 <div class="capcat" onclick="s('service')"><div class="svgi-l svgi" style="background:#ff9500"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/><path d="M8 9h8M8 13h5"/></svg></div><h3>员工服务与咨询</h3><div class="cd">7x24 智能问答</div><div class="ct"><span>FAQ知识库</span><span>对话Agent</span><span>政策解读</span></div><span class="cn">1 场景</span></div>
 </div>
 </div></section>
-
-<!-- ===== SCENARIOS ===== -->
-<section id="scenarios"><div class="c">
+</div>
+  <div class="slide" data-index="4"><section id="scenarios"><div class="c">
 <div class="sh"><div class="lb">Scenarios</div><h2>场景详解 · 共 11 个场景模块</h2><p>每个场景对应一组技能模块——点击展开查看详情</p></div>
 
 <div id="org" class="sg" style="margin-top:0">
@@ -437,9 +448,8 @@ footer{padding:40px 0;text-align:center;font-size:12px;color:var(--t3)}
 <div class="sc" onclick="tc(this)"><div class="sc-hd"><span class="sc-num">11</span><div class="svgi-n svgi" style="background:#ff9500"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/><path d="M8 9h8M8 13h5"/></svg></div><h3>员工智能咨询服务</h3><span class="sb" style="background:#fce4ec;color:#9d174d">SSC</span><span class="sa">v</span></div><div class="sc-bd"><div class="sd">7x24 智能问答，80% 高频问题自助。证明开具、信息修改、进度查询、政策解读。</div><div class="sk"><span>FAQ知识库</span><span>对话Agent</span><span>证明开具</span><span>政策解读</span></div><div class="ai-do"><strong>超级小i 执行：</strong> 全天候问答 > 证明开具 > 自助修改 > 进度查询 > 政策解读</div><div class="hu-do"><strong>全员使用：</strong> 员工自助，管理者随时查询</div></div></div>
 </div>
 </div></section>
-
-<!-- ===== GROWTH JOURNEY ===== -->
-<section id="journey" style="background:#fff;"><div class="c">
+</div>
+  <div class="slide" data-index="5"><section id="journey" style="background:#fff;"><div class="c">
 <div class="sh"><div class="lb">Growth Journey</div><h2>企业从 0 到未来的 HR 进化</h2><p>5 个阶段，从成立到持续运营——超级小i 随需而变。点击展开详情。</p></div>
 <div class="jy">
 
@@ -533,9 +543,8 @@ footer{padding:40px 0;text-align:center;font-size:12px;color:var(--t3)}
 <p style="font-size:14px;color:var(--t2);line-height:1.7">超级小i 从 Day 1 开始陪伴企业成长——每个阶段自动解锁对应能力<br>我们先用内部验证，跑通后再输出给更多企业</p>
 </div>
 </div></section>
-
-<!-- ===== COLLAB ===== -->
-<section id="collab"><div class="c">
+</div>
+  <div class="slide" data-index="6"><section id="collab"><div class="c">
 <div class="sh"><div class="lb">Collaboration Model</div><h2>人机协作三级体系</h2><p>不是替代——是分级分工：系统做执行，人做决策</p></div>
 <table class="ctb">
 <thead><tr><th style="width:16%">级别</th><th style="width:30%">定义</th><th style="width:27%">超级小i 承担</th><th style="width:27%">人聚焦</th></tr></thead>
@@ -549,9 +558,8 @@ footer{padding:40px 0;text-align:center;font-size:12px;color:var(--t3)}
 <p style="font-size:14px;color:var(--t2);line-height:1.7">让 HR 从 <strong style="color:var(--a)">流程执行者</strong> 升级为 <strong style="color:var(--a)">战略决策者</strong></p>
 </div>
 </div></section>
-
-<!-- ===== DATA ===== -->
-<section id="data" style="background:#fff;"><div class="c">
+</div>
+  <div class="slide" data-index="7"><section id="data" style="background:#fff;"><div class="c">
 <div class="sh"><div class="lb">Data Foundation</div><h2>业务执行即数据沉淀</h2><p>超级小i 做每件事的同时沉淀可信数据——随时提供查询、校验、汇总能力</p></div>
 <div class="dg">
 <div class="dc"><div class="svgi-d svgi" style="background:var(--a)"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dd"><h4>员工主数据</h4><p>入职/异动/离职时自动维护——档案、技能库、证书库实时更新</p></div></div>
@@ -565,9 +573,8 @@ footer{padding:40px 0;text-align:center;font-size:12px;color:var(--t3)}
 </div>
 <div class="ds"><strong>核心能力：</strong>业务执行即数据沉淀，无需额外采集。<br><strong style="color:var(--t2)">管理者随时问：</strong>"Q2 人效？""哪个部门超编？""高潜绩效下滑？"——基于真实数据即刻回答。</div>
 </div></section>
-
-<!-- ===== ROADMAP ===== -->
-<section id="roadmap" class="rm-section"><div class="c">
+</div>
+  <div class="slide" data-index="8"><section id="roadmap" class="rm-section"><div class="c">
 <div class="sh"><div class="lb">Roadmap</div><h2>三阶段产品路线图</h2><p>从内部验证到对外输出——逐步覆盖 HR 全场景</p></div>
 <div class="rm-timeline">
 <div class="rm-phase">
@@ -631,9 +638,8 @@ footer{padding:40px 0;text-align:center;font-size:12px;color:var(--t3)}
 <p style="font-size:13px;color:var(--t2);line-height:1.7">每个阶段里程碑明确、可验证。不做大爆炸版本——场景逐块落地，数据逐层沉淀。</p>
 </div>
 </div></section>
-
-<!-- ===== ARCHITECTURE ===== -->
-<section id="architecture" class="arch-section"><div class="c">
+</div>
+  <div class="slide" data-index="9"><section id="architecture" class="arch-section"><div class="c">
 <div class="sh"><div class="lb">System Architecture</div><h2>三层技术架构</h2><p>场景驱动 · 知识注入 · Skills 编排——在现有 HR 系统之上构建 AI 智能层</p></div>
 <div class="arch-diagram">
 <div class="arch-layer l4">
@@ -675,9 +681,8 @@ footer{padding:40px 0;text-align:center;font-size:12px;color:var(--t3)}
 <div class="arch-note"><p><strong>设计原则：</strong>场景驱动而非功能驱动——每个场景解决一个真实问题。Skills 原子化保证灵活组合。知识注入保证领域专业度。集成层保证不替换现有系统。</p></div>
 <div class="arch-caption">在现有 HR 系统之上构建 AI 智能层——不替换、不侵入、可渐进</div>
 </div></section>
-
-<!-- ===== PRICING ===== -->
-<section id="pricing" class="pricing-section"><div class="c">
+</div>
+  <div class="slide" data-index="10"><section id="pricing" class="pricing-section"><div class="c">
 <div class="sh"><div class="lb">Pricing Model</div><h2>费用预估模型</h2><p>为市场化做准备——两种定价模型对比分析</p></div>
 <div class="pr-grid">
 <div class="pr-card">
@@ -736,21 +741,51 @@ footer{padding:40px 0;text-align:center;font-size:12px;color:var(--t3)}
 <p><strong>定价策略说明：</strong>最终定价会参考市场同类产品（北森 ¥40-80/人/月、飞书 People 年付制）+ 实际运营成本。<br><strong>内部测算基础：</strong>每月约 500 万 Token 消耗（200 人团队全场景覆盖），模型调用成本占比约 30-40%。<br><strong>毛利目标：</strong> 60%+ 毛利率，前期以验证 PMF 为主，定价可灵活调整。</p>
 </div>
 </div></section>
-
-<div class="cta"><div class="c">
+</div>
+  <div class="slide" data-index="11"><div class="cta"><div class="c">
 <h2>让 HR 先行 AI 化<br>让企业先跑起来</h2>
 <p>从内部开始——先跑通自己的 AI Native 转型，再用产品服务更多企业</p>
 <a href="#" class="btn btn1">启动内部试点</a>
 <a href="#" class="btn btn2">了解详情</a>
 </div></div>
 <footer><div class="c"><p>超级小i · Internal Pitch · Confidential</p></div></footer>
+</div>
+</div>
+
+
+
+<div class="slide-nav" id="slideNav"></div>
+<div class="slide-cta" id="slideCta"><span class="sc-key">←</span><span class="sc-key">→</span> 点击或方向键翻页</div>
 
 <script>
-function tc(e){e.classList.toggle('expanded')}
-function tj(e){e.classList.toggle('expanded')}
-function s(c){document.getElementById('scenarios').scrollIntoView({behavior:'smooth'})}
-const obs=new IntersectionObserver((e)=>{e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('fi')})},{threshold:0.1});
-document.querySelectorAll('.capcat,.sc,.rm-phase,.arch-layer,.dc,.uc,.jp,.org-card,.pr-card,.pr-tiers').forEach(e=>{e.style.opacity='0';obs.observe(e)});
+var cs=0,ts=12;
+function gs(i){if(i<0)i=0;if(i>=ts)i=ts-1;cs=i;document.getElementById('slider').style.transform='translateY(-'+(i*100)+'vh)';
+document.querySelectorAll('.slide-dot').forEach(function(d,j){d.classList.toggle('active',j===i)});
+var s=document.querySelectorAll('.slide')[i],sec=s&&s.querySelector('section[id]');
+history.replaceState(null,'',sec&&sec.id?'#'+sec.id:'#slide-'+i);}
+function ns(){gs(cs+1)}function ps(){gs(cs-1)}
+document.addEventListener('click',function(e){
+  var t=e.target;
+  if(t.closest('button')||t.closest('a')||t.closest('nav')||t.closest('.sc-hd')||t.closest('.jp')||t.closest('.capcat')||t.closest('.slide-nav')||t.closest('.slide-cta'))return;
+  if(t.closest('.sc-bd')||t.closest('.jdet'))return;
+  ns();
+});
+document.addEventListener('keydown',function(e){
+  if(e.key==='ArrowRight'||e.key==='ArrowDown'||e.key===' '){e.preventDefault();ns()}
+  else if(e.key==='ArrowLeft'||e.key==='ArrowUp'){e.preventDefault();ps()}
+  else if(e.key==='Home'){e.preventDefault();gs(0)}
+  else if(e.key==='End'){e.preventDefault();gs(ts-1)}
+});
+var sn=document.getElementById('slideNav'),sl=['首页','架构','用户','能力','场景','成长','协作','数据','路线','技术','定价','行动'];
+for(var i=0;i<ts;i++){var d=document.createElement('button');d.className='slide-dot'+(i===0?' active':'');d.title=sl[i]||'Slide '+(i+1);
+d.onclick=function(j){return function(){gs(j)}}(i);sn.appendChild(d);}
+document.querySelectorAll('nav a').forEach(function(a){a.addEventListener('click',function(e){
+  e.preventDefault();var id=this.getAttribute('href').replace('#',''),slides=document.querySelectorAll('.slide');
+  for(var i=0;i<slides.length;i++){if(slides[i].querySelector('[id="'+id+'"]')){gs(i);return}}
+})});
+function tc(e){var t=e.target||e;if(t.closest&&t.closest('.sc-bd')&&!t.closest('.sc-hd'))return;e.classList.toggle('expanded')}
+function tj(e){var t=e.target||e;if(t.closest&&t.closest('.jdet'))return;e.classList.toggle('expanded')}
+function s(c){var sls=document.querySelectorAll('.slide');for(var i=0;i<sls.length;i++){if(sls[i].querySelector('[id="'+c+'"]')){gs(i);return}}}
 </script>
 </body>
 </html>
