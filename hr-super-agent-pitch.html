@@ -1,0 +1,523 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>超级小i — 企业 AI Native 转型的 HR 入口</title>
+<style>
+:root{--bg:#f5f5f7;--card:#fff;--t:#1d1d1f;--t2:#86868b;--a:#0071e3;--al:#e8f4fd;--ag:linear-gradient(135deg,#0071e3,#5ac8fa);--g:#34c759;--r:#ff3b30;--p:#af52de;--b:#e5e5ea;--ss:0 1px 3px rgba(0,0,0,.04);--sm:0 4px 20px rgba(0,0,0,.06);--sl:0 20px 60px rgba(0,0,0,.08);--rs:12px;--rm:20px;--rl:28px}
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:-apple-system,BlinkMacSystemFont,'SF Pro Display','SF Pro Text','Helvetica Neue',sans-serif;background:var(--bg);color:var(--t);line-height:1.6;-webkit-font-smoothing:antialiased}
+nav{position:fixed;top:0;left:0;right:0;z-index:100;background:rgba(245,245,247,.8);backdrop-filter:blur(20px);border-bottom:1px solid var(--b);padding:0 40px;height:52px;display:flex;align-items:center;justify-content:space-between}
+nav .logo{font-size:17px;font-weight:600;letter-spacing:-.3px}
+nav ul{display:flex;gap:24px;list-style:none}
+nav a{text-decoration:none;color:var(--t2);font-size:13px;cursor:pointer;transition:color .2s}
+nav a:hover{color:var(--a)}
+.c{max-width:1200px;margin:0 auto;padding:0 40px}
+.hero{padding:160px 0 80px;text-align:center;background:linear-gradient(180deg,#fff,var(--bg))}
+.hero .bdg{display:inline-block;padding:6px 18px;border-radius:20px;background:var(--al);color:var(--a);font-size:13px;font-weight:600;letter-spacing:.5px;margin-bottom:28px}
+.hero h1{font-size:56px;font-weight:700;letter-spacing:-2px;line-height:1.15;margin-bottom:20px}
+.hero h1 span{background:var(--ag);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero .sub{font-size:20px;color:var(--t2);font-weight:400;margin:0 auto 16px;max-width:700px}
+.hero .desc{font-size:16px;color:var(--t2);max-width:640px;margin:0 auto 40px;line-height:1.7}
+.hero-stats{display:flex;justify-content:center;gap:48px;flex-wrap:wrap}
+.hs{text-align:center}.hs .n{font-size:40px;font-weight:700;letter-spacing:-1px;background:var(--ag);-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hs .l{font-size:13px;color:var(--t2);margin-top:4px}
+section{padding:80px 0}
+.sh{text-align:center;margin-bottom:48px}
+.sh .lb{font-size:12px;font-weight:600;color:var(--a);letter-spacing:1px;text-transform:uppercase;margin-bottom:10px}
+.sh h2{font-size:36px;font-weight:700;letter-spacing:-1px;margin-bottom:12px}
+.sh p{font-size:16px;color:var(--t2);max-width:650px;margin:0 auto}
+
+/* SVG icon base */
+.svgi{width:28px;height:28px;flex-shrink:0;display:inline-flex;align-items:center;justify-content:center;border-radius:6px}
+.svgi svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.svgi-l{width:36px;height:36px;border-radius:8px;margin-bottom:10px}
+.svgi-l svg{width:20px;height:20px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.svgi-n{width:32px;height:32px;border-radius:8px}
+.svgi-n svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.svgi-b{width:40px;height:40px;border-radius:10px;margin:0 auto}
+.svgi-b svg{width:22px;height:22px;fill:none;stroke:#fff;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.svgi-d{width:32px;height:32px;border-radius:8px}
+.svgi-d svg{width:16px;height:16px;fill:none;stroke:#fff;stroke-width:2.5;stroke-linecap:round;stroke-linejoin:round}
+.st{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.st h3{font-size:18px;font-weight:700}
+
+/* ORG COMPARE */
+.org-wrap{overflow-x:auto;margin-top:32px;padding-bottom:8px}
+.org-compare{display:flex;flex-wrap:nowrap;align-items:stretch;gap:28px;min-width:0}
+.org-compare > .org-card{flex:1;min-width:0}
+.org-compare > .oc-arrow{flex:0 0 40px;display:flex;align-items:center;justify-content:center;min-width:40px}
+.org-compare > .oc-arrow .oa{font-size:28px;color:var(--a);font-weight:300}
+.org-card{background:var(--card);border-radius:var(--rl);overflow:hidden;box-shadow:var(--ss)}
+.org-card .oc-head{padding:18px 28px;font-size:14px;font-weight:700;text-align:center;letter-spacing:-.2px;white-space:nowrap}
+.org-card .oc-head.now{background:#f5f5f7;color:var(--t)}
+.org-card .oc-head.ftr{background:var(--al);color:var(--a)}
+.org-card .oc-body{padding:12px 28px 20px}
+.oz{font-size:11px;font-weight:600;color:var(--t3);letter-spacing:1px;text-transform:uppercase;padding:14px 0 6px;border-top:1px solid var(--b);margin-top:4px;white-space:nowrap}
+.oz:first-of-type{border-top:none;margin-top:0}
+.or{display:flex;align-items:center;gap:8px;padding:5px 0;white-space:nowrap}
+.or .od{width:6px;height:6px;border-radius:50%;flex-shrink:0}
+.or .on{font-weight:600;min-width:60px;flex-shrink:0;font-size:13px}
+.or .od2{color:var(--t2);font-size:12px}
+.or .ob{padding:2px 8px;border-radius:6px;font-size:11px;font-weight:600;margin-left:auto;flex-shrink:0;white-space:nowrap}
+.or.ob-row{background:var(--al);border-radius:8px;padding:8px 10px;margin:6px -4px}
+.or.ob-row .on{color:var(--a)}.or.ob-row .od2{color:var(--a)}
+.or.gr-row .on{color:var(--g)}
+.onote{text-align:center;margin-top:16px;padding:14px;background:#f0f9ff;border-radius:var(--rm);border:1px solid #c4ddf7;font-size:13px;color:var(--t2)}
+
+/* USERS */
+.ug{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:32px}
+.uc{background:var(--card);border-radius:var(--rl);padding:28px;box-shadow:var(--ss);text-align:center}
+.uc h3{font-size:17px;font-weight:700;margin-bottom:8px;margin-top:10px}
+.uc p{font-size:13px;color:var(--t2);line-height:1.6}
+.uc .ut{display:flex;flex-wrap:wrap;gap:5px;justify-content:center;margin-top:14px}
+.uc .ut span{padding:3px 10px;border-radius:10px;font-size:11px;background:var(--al);color:var(--a)}
+
+/* CAP MAP */
+.capmap{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:40px}
+.capcat{background:var(--card);border-radius:var(--rl);padding:28px;box-shadow:var(--ss);transition:all .3s;cursor:pointer;position:relative;overflow:hidden}
+.capcat:hover{box-shadow:var(--sl);transform:translateY(-3px)}
+.capcat h3{font-size:17px;font-weight:700;margin-bottom:6px}
+.capcat .cd{font-size:13px;color:var(--t2);margin-bottom:14px;line-height:1.5}
+.capcat .ct{display:flex;flex-wrap:wrap;gap:5px}
+.capcat .ct span{padding:3px 10px;border-radius:10px;font-size:11px;background:var(--al);color:var(--a)}
+.capcat .cn{position:absolute;top:16px;right:20px;font-size:11px;font-weight:600;color:var(--t3);background:#f0f0f5;padding:2px 10px;border-radius:10px}
+.capcat::after{content:'+';position:absolute;bottom:16px;right:20px;font-size:16px;color:var(--t3);opacity:0;transition:opacity .3s;font-weight:300}
+.capcat:hover::after{opacity:1}
+
+/* SCENARIO CARDS */
+.sg-cat{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;padding-bottom:10px;border-bottom:1px solid var(--b)}
+.sg-cat .sg-left{display:flex;align-items:center;gap:10px}
+.sg-cat .sg-left h3{font-size:18px;font-weight:700}
+.sg-cat .sg-count{font-size:12px;color:var(--t3);font-weight:500}
+.sg{display:grid;gap:14px;margin-top:28px}
+.sc{border-radius:var(--rm);background:var(--card);box-shadow:var(--ss);overflow:hidden;transition:all .3s}
+.sc:hover{box-shadow:var(--sm)}
+.sc-hd{padding:16px 24px;display:flex;align-items:center;gap:14px;cursor:pointer;transition:background .2s}
+.sc-hd:hover{background:#fafafc}
+.sc-hd .sc-num{font-size:12px;font-weight:700;color:var(--t3);background:#f0f0f5;padding:2px 8px;border-radius:6px;flex-shrink:0}
+.sc-hd h3{font-size:15px;font-weight:700;flex:1;letter-spacing:-.2px}
+.sc-hd .sb{font-size:11px;padding:3px 10px;border-radius:10px;font-weight:600;flex-shrink:0}
+.sc-hd .sa{font-size:12px;color:var(--t3);transition:transform .3s;font-weight:700;flex-shrink:0}
+.sc.expanded .sa{transform:rotate(180deg)}
+.sc-bd{max-height:0;overflow:hidden;transition:max-height .5s ease,padding .3s;padding:0 24px}
+.sc.expanded .sc-bd{max-height:3000px;padding:0 24px 18px}
+.sc-bd .sd{font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:10px}
+.sc-bd .sk{display:flex;flex-wrap:wrap;gap:4px;margin-bottom:10px}
+.sc-bd .sk span{padding:2px 8px;border-radius:8px;font-size:11px;background:#f0f0f5;color:var(--t2)}
+.sc-bd .ai-do{padding:10px 14px;background:var(--al);border-radius:8px;font-size:13px;line-height:1.7;margin-bottom:6px;border-left:3px solid var(--a)}
+.sc-bd .ai-do strong{color:var(--a)}
+.sc-bd .hu-do{padding:10px 14px;background:#f0e6f6;border-radius:8px;font-size:13px;line-height:1.7;margin-bottom:6px;border-left:3px solid var(--p)}
+.sc-bd .hu-do strong{color:#7c3aed}
+
+/* COLLAB TABLE */
+.ctb{width:100%;border-collapse:collapse;margin-top:24px;border-radius:var(--rm);overflow:hidden;box-shadow:var(--ss)}
+.ctb th{font-size:12px;font-weight:600;padding:14px 16px;background:#f5f5f7;color:var(--t2);text-align:left}
+.ctb td{padding:14px 16px;font-size:13px;border-top:1px solid var(--b);background:var(--card)}
+.ctb .l1{color:var(--g);font-weight:600}.ctb .l2{color:var(--a);font-weight:600}.ctb .l3{color:var(--p);font-weight:600}
+
+/* JOURNEY - restyled expanded details */
+.jy{position:relative;padding:32px 0 0 40px;margin-top:24px}
+.jy::before{content:'';position:absolute;left:18px;top:0;bottom:0;width:2px;background:linear-gradient(180deg,var(--a),#5ac8fa,var(--g),var(--p),var(--r))}
+.jp{position:relative;padding:0 0 32px 40px}
+.jp:last-child{padding-bottom:0}
+.jp .jp-dot{position:absolute;left:-40px;top:4px;width:36px;height:36px;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;color:#fff}
+.jp .jl{font-size:11px;font-weight:600;color:var(--a);text-transform:uppercase;letter-spacing:.5px;margin-bottom:4px}
+.jp h3{font-size:17px;font-weight:700;margin-bottom:6px;cursor:pointer;display:flex;align-items:center;gap:8px}
+.jp h3 .ja{font-size:12px;color:var(--t3);transition:transform .3s;font-weight:700}
+.jp.expanded h3 .ja{transform:rotate(180deg)}
+.jp .jd{font-size:13px;color:var(--t2);line-height:1.7;margin-bottom:8px}
+.jp .ja2{display:flex;flex-wrap:wrap;gap:5px;margin-bottom:8px}
+.jp .ja2 span{padding:3px 10px;border-radius:10px;font-size:11px;background:#f0f0f5;color:var(--t2)}
+.jp .jdet{max-height:0;overflow:hidden;transition:max-height .5s ease}
+.jp.expanded .jdet{max-height:3000px}
+
+/* Expanded detail card - redesigned with hierarchy */
+.jp .jdet .jdc{border-radius:var(--rm);padding:20px 24px;margin-top:12px;border:1px solid var(--b);background:var(--card)}
+
+.jp .jdet .jdc .jdc-req{position:relative;padding:14px 18px;background:linear-gradient(135deg,#fef9e7,#fff3cd);border-radius:10px;margin-bottom:16px;border:1px solid #f5d49c}
+.jp .jdet .jdc .jdc-req .jdc-req-label{font-size:11px;font-weight:700;color:#92400e;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.jp .jdet .jdc .jdc-req .jdc-req-text{font-size:14px;font-weight:600;color:#78350f;line-height:1.5}
+
+.jp .jdet .jdc .jdc-flow{display:flex;align-items:flex-start;gap:12px;margin-bottom:14px}
+.jp .jdet .jdc .jdc-flow .jdc-ai{flex:1;padding:14px 16px;background:var(--al);border-radius:10px;border-left:3px solid var(--a)}
+.jp .jdet .jdc .jdc-flow .jdc-ai .jdc-label{font-size:11px;font-weight:700;color:var(--a);text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.jp .jdet .jdc .jdc-flow .jdc-ai .jdc-text{font-size:13px;color:var(--t);line-height:1.7}
+.jp .jdet .jdc .jdc-flow .jdc-arr{display:flex;align-items:center;padding-top:20px;color:var(--t3);font-size:18px;font-weight:300;flex-shrink:0}
+.jp .jdet .jdc .jdc-flow .jdc-hu{flex:1;padding:14px 16px;background:#f0e6f6;border-radius:10px;border-left:3px solid var(--p)}
+.jp .jdet .jdc .jdc-flow .jdc-hu .jdc-label{font-size:11px;font-weight:700;color:#7c3aed;text-transform:uppercase;letter-spacing:.5px;margin-bottom:6px}
+.jp .jdet .jdc .jdc-flow .jdc-hu .jdc-text{font-size:13px;color:var(--t);line-height:1.7}
+
+.jp .jdet .jdc .jdc-skills-label{font-size:11px;font-weight:600;color:var(--t3);text-transform:uppercase;letter-spacing:.5px;margin-bottom:8px}
+.jp .jdet .jdc .jdc-skills{display:flex;flex-wrap:wrap;gap:4px}
+.jp .jdet .jdc .jdc-skills span{padding:2px 8px;border-radius:8px;font-size:11px;background:#f0f0f5;color:var(--t2)}
+
+/* DATA */
+.dg{display:grid;grid-template-columns:repeat(2,1fr);gap:20px;margin-top:32px}
+.dc{background:var(--card);border-radius:var(--rm);padding:24px;box-shadow:var(--ss);display:flex;align-items:flex-start;gap:14px}
+.dc .dd h4{font-size:14px;font-weight:700;margin-bottom:3px}
+.dc .dd p{font-size:12px;color:var(--t2);line-height:1.6}
+.ds{margin-top:24px;padding:20px 28px;background:linear-gradient(135deg,#e8f4fd,#d6ebfa);border-radius:var(--rm);text-align:center;font-size:14px;line-height:1.7;color:var(--t2)}
+.ds strong{color:var(--a)}
+
+/* ARCH + ROADMAP COMBINED */
+.ar-section{background:linear-gradient(180deg,#fff,var(--bg))}
+.ar-grid{display:grid;grid-template-columns:1fr 1fr;gap:32px;margin-top:32px}
+.ar-left .arch-flow{display:flex;align-items:stretch;gap:16px;margin-top:20px;flex-wrap:wrap}
+.ar-left .ab{flex:1;min-width:130px;border-radius:var(--rm);padding:24px 20px;text-align:center}
+.ar-left .ab.s1{background:linear-gradient(135deg,#e8f4fd,#d6ebfa);border:1px solid #c4ddf7}
+.ar-left .ab.s2{background:linear-gradient(135deg,#f0e6f6,#e8d5f2);border:1px solid #dbc4e8}
+.ar-left .ab.s3{background:linear-gradient(135deg,#e6f4ea,#d2ecd8);border:1px solid #b8d9c1}
+.ar-left .ab h4{font-size:14px;font-weight:700;margin-bottom:6px}
+.ar-left .ab p{font-size:11px;color:var(--t2);line-height:1.5}
+.ar-left .aa{display:flex;align-items:center;justify-content:center;font-size:18px;color:var(--t3);flex:0 0 20px}
+
+.rmg{display:flex;flex-direction:column;gap:16px}
+.rm{background:var(--card);border-radius:var(--rm);padding:20px 24px;box-shadow:var(--ss);border-left:4px solid var(--t3);display:grid;grid-template-columns:1fr 2fr 1fr;align-items:center;gap:16px}
+.rm.cur{border-left-color:var(--a);background:linear-gradient(90deg,var(--al),var(--card))}
+.rm.nxt{border-left-color:#5ac8fa}
+.rm.ftr{border-left-color:var(--p)}
+.rm .rm-p{font-size:12px;font-weight:600;color:var(--a);flex-shrink:0}
+.rm .rm-body{font-size:13px;color:var(--t2);line-height:1.6}
+.rm .rm-body strong{color:var(--a)}
+.rm .rm-goal{font-size:12px;font-weight:600;color:var(--g);text-align:right;flex-shrink:0}
+
+.cta{text-align:center;padding:80px 0}
+.cta h2{font-size:36px;font-weight:700;letter-spacing:-1px;margin-bottom:12px}
+.cta p{font-size:16px;color:var(--t2);margin-bottom:28px;max-width:500px;margin:0 auto 28px}
+.btn{display:inline-block;padding:14px 36px;border-radius:28px;font-size:15px;font-weight:600;text-decoration:none;transition:all .3s;border:none;cursor:pointer}
+.btn1{background:var(--a);color:#fff}.btn1:hover{background:#0066cc}
+.btn2{background:var(--card);color:var(--a);border:1px solid var(--b);margin-left:12px}
+footer{padding:40px 0;text-align:center;font-size:12px;color:var(--t3)}
+@keyframes fi{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+.fi{animation:fi .6s ease forwards;opacity:0}
+
+@media(max-width:1050px){
+  .org-compare{gap:16px}
+  .org-card .oc-head{font-size:13px;padding:16px 20px}
+  .org-card .oc-body{padding:10px 20px 16px}
+  .or{font-size:12px}
+  .or .on{min-width:50px;font-size:12px}
+  .ar-grid{grid-template-columns:1fr}
+  .rm{grid-template-columns:1fr;text-align:center;gap:8px}
+  .rm .rm-goal{text-align:center}
+}
+@media(max-width:900px){
+  .hero h1{font-size:32px};.sh h2{font-size:26px}
+  .capmap{grid-template-columns:1fr 1fr}
+  .org-compare{flex-wrap:wrap}
+  .org-compare > .oc-arrow{flex:1 0 100%;padding:8px 0;transform:rotate(90deg)}
+  .ug,.dg{grid-template-columns:1fr}
+  .hero-stats{gap:24px};nav ul{display:none}
+  .ctb{font-size:12px}
+  .btn2{margin-left:0;margin-top:12px}
+  .jp .jdet .jdc .jdc-flow{flex-direction:column}
+  .jp .jdet .jdc .jdc-flow .jdc-arr{transform:rotate(90deg);padding:4px 0;align-self:center}
+}
+@media(max-width:600px){.capmap{grid-template-columns:1fr}}
+</style>
+</head>
+<body>
+
+<nav><div class="logo">超级小i</div><ul><li><a href="#org">架构</a></li><li><a href="#users">用户</a></li><li><a href="#map">能力</a></li><li><a href="#scenarios">场景</a></li><li><a href="#journey">成长</a></li><li><a href="#collab">协作</a></li><li><a href="#data">数据</a></li><li><a href="#arch-rm">路径</a></li></ul></nav>
+
+<div class="hero"><div class="c">
+<div class="bdg">INTERNAL PITCH · 2026</div>
+<h1>超级小i<br><span>企业 AI Native 转型的 HR 入口</span></h1>
+<p class="sub">从 HR 开始 AI 化，让企业先跑起来</p>
+<p class="desc">企业聚焦核心业务，HR 事务交给超级小i。不是替代任何人——事务性工作由系统承担，人聚焦战略决策。</p>
+<div class="hero-stats">
+<div class="hs"><div class="n">11</div><div class="l">场景模块</div></div>
+<div class="hs"><div class="n">50+</div><div class="l">Skill 模块</div></div>
+<div class="hs"><div class="n">3级</div><div class="l">人机协作</div></div>
+<div class="hs"><div class="n">3类</div><div class="l">服务用户</div></div>
+</div>
+</div></div>
+
+<!-- ===== ORG COMPARE ===== -->
+<section id="org" style="background:#fff;"><div class="c">
+<div class="sh"><div class="lb">Org Evolution</div><h2>HR 组织架构的进化</h2><p>从全人力到人机协同——不是替代，是重新分工</p></div>
+<div class="org-wrap">
+<div class="org-compare">
+<div class="org-card"><div class="oc-head now">传统模式：全人力的 HR 组织</div><div class="oc-body">
+<div class="oz">战略层</div>
+<div class="or"><span class="od" style="background:var(--a)"></span><span class="on">CHRO</span><span class="od2">战略决策 · 团队管理</span></div>
+<div class="or"><span class="od" style="background:var(--a)"></span><span class="on">OD 专家</span><span class="od2">组织设计 · 岗位体系</span></div>
+<div class="or"><span class="od" style="background:var(--a)"></span><span class="on">TD 专家</span><span class="od2">人才盘点 · 发展</span></div>
+<div class="oz">业务层</div>
+<div class="or"><span class="od" style="background:var(--p)"></span><span class="on">HRBP</span><span class="od2">业务对接 · 团队支持</span></div>
+<div class="or"><span class="od" style="background:var(--p)"></span><span class="on">C&B 专家</span><span class="od2">薪酬设计 · 市场对标</span></div>
+<div class="or"><span class="od" style="background:var(--p)"></span><span class="on">TA 负责人</span><span class="od2">招聘策略 · 渠道管理</span></div>
+<div class="or"><span class="od" style="background:var(--p)"></span><span class="on">绩效专家</span><span class="od2">绩效体系设计</span></div>
+<div class="or"><span class="od" style="background:var(--p)"></span><span class="on">ER 专家</span><span class="od2">员工关系 · 合规</span></div>
+<div class="oz">运营层</div>
+<div class="or"><span class="od" style="background:#aeaeb2"></span><span class="on">SSC 专员</span><span class="od2">入离职 · 证明 · 咨询</span></div>
+<div class="or"><span class="od" style="background:#aeaeb2"></span><span class="on">薪酬专员</span><span class="od2">月度核算 · 社保个税</span></div>
+<div class="or"><span class="od" style="background:#aeaeb2"></span><span class="on">招聘专员</span><span class="od2">JD · 筛选 · 面试协调</span></div>
+<div class="or"><span class="od" style="background:#aeaeb2"></span><span class="on">绩效专员</span><span class="od2">绩效推进 · 数据整理</span></div>
+<div class="or"><span class="od" style="background:#aeaeb2"></span><span class="on">培训专员</span><span class="od2">排课 · 运营 · 学分</span></div>
+<div class="or"><span class="od" style="background:#aeaeb2"></span><span class="on">HRIS/分析</span><span class="od2">系统维护 · 报表</span></div>
+<div class="or"><span class="od" style="background:#aeaeb2"></span><span class="on">合规专员</span><span class="od2">法规跟踪 · 审计</span></div>
+</div></div>
+<div class="oc-arrow"><span class="oa">→</span></div>
+<div class="org-card"><div class="oc-head ftr">未来模式：超级小i + 战略 HR 团队</div><div class="oc-body">
+<div class="oz">人聚焦战略决策</div>
+<div class="or"><span class="od" style="background:var(--a)"></span><span class="on">CHRO</span><span class="od2">战略决策 · 方向把控</span></div>
+<div class="or"><span class="od" style="background:var(--a)"></span><span class="on">战略 HR</span><span class="od2">OD+TD+C&B+HRBP 聚焦设计/分析</span><span class="ob" style="background:var(--al);color:var(--a)">升级</span></div>
+<div class="or ob-row"><span class="od" style="background:var(--a)"></span><span class="on">超级小i</span><span class="od2">11 场景 · 50+ Skill · 7x24</span></div>
+<div class="oz" style="border-top-color:var(--al);color:var(--g)">超级小i 承担的事务层</div>
+<div class="or gr-row"><span class="od" style="background:var(--g)"></span><span class="on">SSC / 薪酬</span><span class="od2">入离职 · 合同 · 核算 · 预警 · 代发</span></div>
+<div class="or gr-row"><span class="od" style="background:var(--g)"></span><span class="on">招聘 / 绩效</span><span class="od2">JD · 匹配 · 目标拆解 · 校验</span></div>
+<div class="or gr-row"><span class="od" style="background:var(--g)"></span><span class="on">人才 / 合规</span><span class="od2">九宫格 · 风险 · 法规 · 审计</span></div>
+<div class="or gr-row"><span class="od" style="background:var(--g)"></span><span class="on">数据 / 培训</span><span class="od2">驾驶舱 · 课程 · 学分 · 报告</span></div>
+</div></div>
+</div></div>
+<div class="onote">事务性工作由超级小i承担，人聚焦设计、分析、决策——这是能力升级，不是替代</div>
+</div></section>
+
+<!-- ===== USERS ===== -->
+<section id="users"><div class="c">
+<div class="sh"><div class="lb">Who Uses It</div><h2>超级小i 服务谁？</h2><p>全员可用 · 因角色而异</p></div>
+<div class="ug">
+<div class="uc"><div class="svgi-b svgi" style="background:var(--a)"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><h3>普通员工</h3><p>自助查询薪资、合同、假期、政策。证明自动开具、信息变更、流程进度查询——7x24 随时问</p><div class="ut"><span>查工资</span><span>开证明</span><span>问政策</span><span>假期查询</span></div></div>
+<div class="uc"><div class="svgi-b svgi" style="background:#5ac8fa"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="M8 10h8M8 14h5"/></svg></div><h3>团队管理者</h3><p>看团队人效、绩效进展、人员变动预警。发起招聘、调薪建议、离职面谈准备——数据驱动管理</p><div class="ut"><span>人效看板</span><span>招聘申请</span><span>绩效追踪</span><span>离职预警</span></div></div>
+<div class="uc"><div class="svgi-b svgi" style="background:var(--p)"><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9 16 14 18 21 12 17 6 21 8 14 2 9 9 9 12 2"/></svg></div><h3>战略 HR 团队</h3><p>从日常事务中解放，专注组织设计、人才战略、文化构建。超级小i提供数据、方案、建议</p><div class="ut"><span>组织设计</span><span>人才战略</span><span>数据分析</span><span>制度搭建</span></div></div>
+</div></div></section>
+
+<!-- ===== CAPABILITY MAP ===== -->
+<section id="map" style="background:#fff;"><div class="c">
+<div class="sh"><div class="lb">Capability Map</div><h2>超级小i 能力全景</h2><p>6 大场景族群 x 11 个场景模块 x 50+ Skills</p></div>
+<div class="capmap">
+<div class="capcat" onclick="s('org')"><div class="svgi-l svgi" style="background:var(--a)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div><h3>组织与制度</h3><div class="cd">从 0 搭建到 IPO 完善制度体系</div><div class="ct"><span>组织设计</span><span>岗位评估</span><span>制度生成</span><span>SOP引擎</span></div><span class="cn">2 场景</span></div>
+<div class="capcat" onclick="s('talent')"><div class="svgi-l svgi" style="background:#5ac8fa"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/><path d="M20 4l2 2-2 2"/></svg></div><h3>人才全生命周期</h3><div class="cd">招·入·用·评·留·离</div><div class="ct"><span>招聘引擎</span><span>入职编排</span><span>绩效运营</span><span>人才盘点</span></div><span class="cn">4 场景</span></div>
+<div class="capcat" onclick="s('comp')"><div class="svgi-l svgi" style="background:var(--g)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg></div><h3>薪酬与合规</h3><div class="cd">算得准 · 发得对 · 合得规</div><div class="ct"><span>薪酬核算</span><span>社保个税</span><span>合同生成</span><span>合规审计</span></div><span class="cn">2 场景</span></div>
+<div class="capcat" onclick="s('data')"><div class="svgi-l svgi" style="background:#ff9500"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 12h16"/><path d="M12 4v16"/></svg></div><h3>数据与决策</h3><div class="cd">从数据到洞察到行动</div><div class="ct"><span>驾驶舱</span><span>NL查询</span><span>异常预警</span><span>AI建议</span></div><span class="cn">1 场景</span></div>
+<div class="capcat" onclick="s('culture')"><div class="svgi-l svgi" style="background:var(--p)"><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9 16 14 18 21 12 17 6 21 8 14 2 9 9 9 12 2"/></svg></div><h3>文化与员工体验</h3><div class="cd">从入职到日常的文化落地</div><div class="ct"><span>价值观</span><span>Pulse调研</span><span>雇主品牌</span><span>文化活动</span></div><span class="cn">1 场景</span></div>
+<div class="capcat" onclick="s('service')"><div class="svgi-l svgi" style="background:#ff9500"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/><path d="M8 9h8M8 13h5"/></svg></div><h3>员工服务与咨询</h3><div class="cd">7x24 智能问答</div><div class="ct"><span>FAQ知识库</span><span>对话Agent</span><span>政策解读</span></div><span class="cn">1 场景</span></div>
+</div>
+</div></section>
+
+<!-- ===== SCENARIOS ===== -->
+<section id="scenarios"><div class="c">
+<div class="sh"><div class="lb">Scenarios</div><h2>场景详解 · 共 11 个场景模块</h2><p>每个场景对应一组技能模块——点击展开查看详情</p></div>
+
+<div id="org" class="sg" style="margin-top:0">
+<div class="sg-cat"><div class="sg-left"><div class="svgi" style="background:var(--a)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div><h3>组织与制度</h3></div><span class="sg-count">2 个场景</span></div>
+<div class="sc" onclick="tc(this)"><div class="sc-hd"><span class="sc-num">01</span><div class="svgi-n svgi" style="background:var(--a)"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div><h3>组织架构设计</h3><span class="sb" style="background:var(--al);color:var(--a)">OD</span><span class="sa">v</span></div><div class="sc-bd"><div class="sd">公司成立或业务转型，需要从 0 设计或调整组织架构。超级小i 调研同赛道公司架构模式，生成多套方案，输出全套组织文档。</div><div class="sk"><span>组织架构设计</span><span>行业对标引擎</span><span>岗位价值评估</span><span>JD模板生成</span></div><div class="ai-do"><strong>超级小i 执行：</strong> 行业调研 > 方案生成（扁平/职能/事业部）> 部门职责+岗位图谱+职级体系文档输出</div><div class="hu-do"><strong>人决策：</strong> 选择最合适的架构方案，审批职级体系</div></div></div>
+<div class="sc" onclick="tc(this)"><div class="sc-hd"><span class="sc-num">02</span><div class="svgi-n svgi" style="background:var(--a)"><svg viewBox="0 0 24 24"><path d="M14 2H6a2 2 0 00-2 2v16a2 2 0 002 2h12a2 2 0 002-2V8z"/><polyline points="14 2 14 8 20 8"/></svg></div><h3>制度体系搭建</h3><span class="sb" style="background:var(--al);color:var(--a)">OD</span><span class="sa">v</span></div><div class="sc-bd"><div class="sd">从招聘制度到员工手册，从 SOP 到 IPO 级治理文档。6 大制度手册互相关联一致，法规变化时自动推送修订建议。</div><div class="sk"><span>制度文档生成</span><span>SOP流程引擎</span><span>制度修订建议</span><span>审计文档打包</span></div><div class="ai-do"><strong>超级小i 执行：</strong> 制度手册生成 > SOP 在线化 > 修订建议推送 > 审计文档打包</div><div class="hu-do"><strong>人决策：</strong> 确认制度内容，审批发布</div></div></div>
+</div>
+
+<div id="talent" class="sg">
+<div class="sg-cat"><div class="sg-left"><div class="svgi" style="background:#5ac8fa"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/><path d="M20 4l2 2-2 2"/></svg></div><h3>人才全生命周期</h3></div><span class="sg-count">4 个场景</span></div>
+<div class="sc" onclick="tc(this)"><div class="sc-hd"><span class="sc-num">03</span><div class="svgi-n svgi" style="background:#5ac8fa"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><h3>招聘全流程</h3><span class="sb" style="background:#f0e6f6;color:#7c3aed">TA</span><span class="sa">v</span></div><div class="sc-bd"><div class="sd">从 JD 到 Offer，全流程招聘。先研判需求真伪——约 15-30% 可由现有 Skill 或内部调配满足，无需对外招聘。</div><div class="sk"><span>JD生成引擎</span><span>多渠道发布</span><span>简历语义匹配</span><span>候选人沟通Agent</span><span>面试流程编排</span><span>Offer薪酬建议</span></div><div class="ai-do"><strong>超级小i 执行：</strong> 需求研判 > JD生成 > 多平台发布 > 简历自动分级 > 候选人触达 > 面试协调 > Offer 建议</div><div class="hu-do"><strong>人决策：</strong> 确认终选，薪资谈判，Offer 审批</div></div></div>
+<div class="sc" onclick="tc(this)"><div class="sc-hd"><span class="sc-num">04</span><div class="svgi-n svgi" style="background:#5ac8fa"><svg viewBox="0 0 24 24"><path d="M16 21v-2a4 4 0 00-4-4H5a4 4 0 00-4 4v2"/><circle cx="8.5" cy="7" r="4"/><polyline points="17 11 19 13 23 9"/></svg></div><h3>入职全流程</h3><span class="sb" style="background:#fce4ec;color:#9d174d">SSC</span><span class="sa">v</span></div><div class="sc-bd"><div class="sd">Offer 签署后全自动衔接：合同生成、账号开通、入职指引、融入计划——无需任何手工操作。</div><div class="sk"><span>合同生成引擎</span><span>电子签章</span><span>入职流程编排</span><span>IT账号开通</span><span>融入计划</span><span>培训任务</span></div><div class="ai-do"><strong>超级小i 执行：</strong> 合同自动生成+签 > 系统账号开通 > 入职指引 > 30-60-90天融入计划 > Pulse 调研预警</div><div class="hu-do"><strong>人决策：</strong> 审批特殊入职安排</div></div></div>
+<div class="sc" onclick="tc(this)"><div class="sc-hd"><span class="sc-num">05</span><div class="svgi-n svgi" style="background:#5ac8fa"><svg viewBox="0 0 24 24"><path d="M12 20V10"/><path d="M18 20V5"/><path d="M6 20v-4"/></svg></div><h3>绩效管理运营</h3><span class="sb" style="background:#f0e6f6;color:#7c3aed">绩效</span><span class="sa">v</span></div><div class="sc-bd"><div class="sd">方法论推荐、目标拆解、指标库、全周期推进、SMART 校验、结果关联薪酬。</div><div class="sk"><span>方法论推荐</span><span>目标拆解</span><span>指标库生成</span><span>流程编排</span><span>SMART校验</span><span>360评估</span></div><div class="ai-do"><strong>超级小i 执行：</strong> 方法论推荐 > 目标拆解 > 指标库 > 全周期推进 > SMART 校验 > 结果关联</div><div class="hu-do"><strong>人决策：</strong> 审批目标方向，最终绩效评定</div></div></div>
+<div class="sc" onclick="tc(this)"><div class="sc-hd"><span class="sc-num">06</span><div class="svgi-n svgi" style="background:#5ac8fa"><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9 16 14 18 21 12 17 6 21 8 14 2 9 9 9 12 2"/></svg></div><h3>人才盘点与发展</h3><span class="sb" style="background:#f0e6f6;color:#7c3aed">TD</span><span class="sa">v</span></div><div class="sc-bd"><div class="sd">基于实时绩效、360、项目成果数据刷新人才视图——从事后静态盘点升级为实时动态人才监测。</div><div class="sk"><span>九宫格引擎</span><span>离职预测</span><span>继任计划</span><span>IDP生成</span><span>培训匹配</span></div><div class="ai-do"><strong>超级小i 执行：</strong> 九宫格 > 离职风险模型 > 关键岗位热力图 > 个性化 IDP > 培训资源推荐</div><div class="hu-do"><strong>人决策：</strong> 确认关键人才，审批发展计划</div></div></div>
+</div>
+
+<div id="comp" class="sg">
+<div class="sg-cat"><div class="sg-left"><div class="svgi" style="background:var(--g)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg></div><h3>薪酬与合规</h3></div><span class="sg-count">2 个场景</span></div>
+<div class="sc" onclick="tc(this)"><div class="sc-hd"><span class="sc-num">07</span><div class="svgi-n svgi" style="background:var(--g)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg></div><h3>薪酬核算与发放</h3><span class="sb" style="background:#fce4ec;color:#9d174d">C&B</span><span class="sa">v</span></div><div class="sc-bd"><div class="sd">多源数据自动归集、异常预警、代发文件生成——每月核算从数天到数分钟。</div><div class="sk"><span>多源归集</span><span>智能核算</span><span>异常预警</span><span>银行代发</span><span>个税社保</span></div><div class="ai-do"><strong>超级小i 执行：</strong> 考勤/绩效/社保数据归集 > 核算 > 预警 > 代发文件 > 工资单 > 个税社保申报</div><div class="hu-do"><strong>人决策：</strong> 审批异常，确认发放</div></div></div>
+<div class="sc" onclick="tc(this)"><div class="sc-hd"><span class="sc-num">08</span><div class="svgi-n svgi" style="background:var(--g)"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><h3>合规与合同管理</h3><span class="sb" style="background:#fce4ec;color:#9d174d">ER/合规</span><span class="sa">v</span></div><div class="sc-bd"><div class="sd">31 省法规库 24h 更新、合同模板智能匹配、定期合规审计、补偿金精准计算。</div><div class="sk"><span>法规库更新</span><span>合同生成</span><span>补偿金精算</span><span>合规审计</span></div><div class="ai-do"><strong>超级小i 执行：</strong> 法规库更新 > 合同模板匹配 > 补偿金计算 > 合规审计 > 风险预警</div><div class="hu-do"><strong>人决策：</strong> 确认审计结果，处理争议</div></div></div>
+</div>
+
+<div id="data" class="sg" style="margin-top:16px">
+<div class="sg-cat"><div class="sg-left"><div class="svgi" style="background:#ff9500"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 12h16"/><path d="M12 4v16"/></svg></div><h3>数据与决策</h3></div><span class="sg-count">1 个场景</span></div>
+<div class="sc" onclick="tc(this)"><div class="sc-hd"><span class="sc-num">09</span><div class="svgi-n svgi" style="background:#ff9500"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 12h16"/><path d="M12 4v16"/></svg></div><h3>HR 数据驾驶舱</h3><span class="sb" style="background:#f0e6f6;color:#7c3aed">Analytics</span><span class="sa">v</span></div><div class="sc-bd"><div class="sd">多系统数据自动归集，一屏看全人效/薪酬/人才。NL查询、异常预警、尽调报告一键生成。</div><div class="sk"><span>数据驾驶舱</span><span>NL查询</span><span>异常检测</span><span>尽调报告</span><span>AI建议</span></div><div class="ai-do"><strong>超级小i 执行：</strong> 多源归集 > 驾驶舱 > NL 查询 > 异常检测 > 报告生成 > AI 建议</div><div class="hu-do"><strong>人决策：</strong> 解读数据，拍板决策</div></div></div>
+</div>
+
+<div id="culture" class="sg" style="margin-top:16px">
+<div class="sg-cat"><div class="sg-left"><div class="svgi" style="background:var(--p)"><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9 16 14 18 21 12 17 6 21 8 14 2 9 9 9 12 2"/></svg></div><h3>文化与员工体验</h3></div><span class="sg-count">1 个场景</span></div>
+<div class="sc" onclick="tc(this)"><div class="sc-hd"><span class="sc-num">10</span><div class="svgi-n svgi" style="background:var(--p)"><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9 16 14 18 21 12 17 6 21 8 14 2 9 9 9 12 2"/></svg></div><h3>文化运营与雇主品牌</h3><span class="sb" style="background:#fce4ec;color:#9d174d">ER/文化</span><span class="sa">v</span></div><div class="sc-bd"><div class="sd">价值观构建、全链路融入、Pulse 调研、雇主品牌内容、文化活动、诊断报告。</div><div class="sk"><span>价值观构建</span><span>Pulse调研</span><span>雇主品牌</span><span>文化活动</span><span>文化诊断</span></div><div class="ai-do"><strong>超级小i 执行：</strong> 价值观+行为锚点 > 嵌入面试/培训/绩效 > 月度 Pulse > 文化内容 > 活动运营 > 诊断报告</div><div class="hu-do"><strong>人决策：</strong> 文化方向把控，以身作则倡导</div></div></div>
+</div>
+
+<div id="service" class="sg" style="margin-top:16px">
+<div class="sg-cat"><div class="sg-left"><div class="svgi" style="background:#ff9500"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/><path d="M8 9h8M8 13h5"/></svg></div><h3>员工服务与咨询</h3></div><span class="sg-count">1 个场景</span></div>
+<div class="sc" onclick="tc(this)"><div class="sc-hd"><span class="sc-num">11</span><div class="svgi-n svgi" style="background:#ff9500"><svg viewBox="0 0 24 24"><path d="M21 15a2 2 0 01-2 2H7l-4 4V5a2 2 0 012-2h14a2 2 0 012 2z"/><path d="M8 9h8M8 13h5"/></svg></div><h3>员工智能咨询服务</h3><span class="sb" style="background:#fce4ec;color:#9d174d">SSC</span><span class="sa">v</span></div><div class="sc-bd"><div class="sd">7x24 智能问答，80% 高频问题自助。证明开具、信息修改、进度查询、政策解读。</div><div class="sk"><span>FAQ知识库</span><span>对话Agent</span><span>证明开具</span><span>政策解读</span></div><div class="ai-do"><strong>超级小i 执行：</strong> 全天候问答 > 证明开具 > 自助修改 > 进度查询 > 政策解读</div><div class="hu-do"><strong>全员使用：</strong> 员工自助，管理者随时查询</div></div></div>
+</div>
+</div></section>
+
+<!-- ===== GROWTH JOURNEY ===== -->
+<section id="journey" style="background:#fff;"><div class="c">
+<div class="sh"><div class="lb">Growth Journey</div><h2>企业从 0 到未来的 HR 进化</h2><p>5 个阶段，从成立到持续运营——超级小i 随需而变。点击展开详情。</p></div>
+<div class="jy">
+
+<div class="jp" onclick="tj(this)">
+<span class="jp-dot" style="background:var(--a)">1</span>
+<div class="jl">Phase 1 · 起步期</div>
+<h3>组织设计 + 第一个人入职 <span class="ja">v</span></h3>
+<div class="jd">公司刚成立，没有 OD、没有 HR、没有流程——组织架构怎么搭、岗位怎么设、第一位员工怎么招怎么入职，全部从零开始。</div>
+<div class="ja2"><span>组织架构设计</span><span>JD生成</span><span>简历筛选</span><span>合同生成</span><span>入职编排</span></div>
+<div class="jdet"><div class="jdc">
+<div class="jdc-req"><div class="jdc-req-label">CEO 提出需求</div><div class="jdc-req-text">"我们需要搭建组织、招聘第一位员工"</div></div>
+<div class="jdc-flow">
+<div class="jdc-ai"><div class="jdc-label">超级小i 执行</div><div class="jdc-text">行业调研 > 架构方案（扁平/职能/事业部）> 部门职责+岗位图谱+职级体系 > JD 生成 > 多渠道发布 > 简历匹配 > 面试协调 > Offer 建议 > 合同生成 > 账号开通 > 入职指引</div></div>
+<div class="jdc-arr">→</div>
+<div class="jdc-hu"><div class="jdc-label">人决策</div><div class="jdc-text">选择架构方案，确认终选，Offer 审批</div></div>
+</div>
+<div class="jdc-skills-label">Skills 模块</div><div class="jdc-skills"><span>组织架构设计</span><span>行业对标引擎</span><span>岗位价值评估</span><span>JD生成引擎</span><span>多渠道发布</span><span>简历语义匹配</span><span>候选人沟通Agent</span><span>面试流程编排</span><span>Offer薪酬建议</span><span>合同生成引擎</span><span>入职流程编排</span><span>IT账号开通</span></div>
+</div></div>
+</div>
+
+<div class="jp" onclick="tj(this)">
+<span class="jp-dot" style="background:#5ac8fa">2</span>
+<div class="jl">Phase 2 · 团队扩展期</div>
+<h3>薪酬体系 + 入职与文化落地 <span class="ja">v</span></h3>
+<div class="jd">团队从个位数到几十人，薪资没有体系、入职全靠手动、新员工感受不到文化——HR 事务全面铺开。</div>
+<div class="ja2"><span>薪酬体系</span><span>入职编排</span><span>社保个税</span><span>价值观构建</span></div>
+<div class="jdet"><div class="jdc">
+<div class="jdc-req"><div class="jdc-req-label">CEO 提出需求</div><div class="jdc-req-text">"发工资不是转个账而已，新员工说感受不到文化"</div></div>
+<div class="jdc-flow">
+<div class="jdc-ai"><div class="jdc-label">超级小i 执行</div><div class="jdc-text">岗位评估 > 市场对标 > 套改测算 > 月度自动核算 > 考勤/绩效/社保归集 > 异常预警 > 合同生成+签 > 账号开通 > 入职指引 > 30-60-90天融入 > Pulse 调研</div></div>
+<div class="jdc-arr">→</div>
+<div class="jdc-hu"><div class="jdc-label">人决策</div><div class="jdc-text">审批薪酬方案，确认发放，特殊入职安排</div></div>
+</div>
+<div class="jdc-skills-label">Skills 模块</div><div class="jdc-skills"><span>岗位价值评估</span><span>薪酬调研对标</span><span>套改测算引擎</span><span>薪资智能核算</span><span>异常波动预警</span><span>银行代发</span><span>个税社保计算</span><span>合同生成引擎</span><span>电子签章集成</span><span>入职流程编排</span><span>IT账号开通</span><span>融入计划生成</span><span>培训任务管理</span><span>价值观构建</span><span>文化融入引擎</span><span>敬业度调研</span></div>
+</div></div>
+</div>
+
+<div class="jp" onclick="tj(this)">
+<span class="jp-dot" style="background:var(--g)">3</span>
+<div class="jl">Phase 3 · 成长期</div>
+<h3>绩效 + 人才盘点 + 合规上线 <span class="ja">v</span></h3>
+<div class="jd">业务跑起来了但看不清谁在做什么、核心员工被挖才发现没做人才盘点、第一次仲裁发现合同不合规——每项都是血泪教训。</div>
+<div class="ja2"><span>绩效运营</span><span>人才九宫格</span><span>离职预测</span><span>法规库</span><span>合规审计</span></div>
+<div class="jdet"><div class="jdc">
+<div class="jdc-req"><div class="jdc-req-label">CEO 提出需求</div><div class="jdc-req-text">"谁在划水谁在拼命？核心员工被挖了！合同全是坑..."</div></div>
+<div class="jdc-flow">
+<div class="jdc-ai"><div class="jdc-label">超级小i 执行</div><div class="jdc-text">方法论推荐 > 目标拆解 > 指标库 > 全周期推进 > SMART 校验 > 360 评估 > 九宫格 > 离职风险模型 > 继任热力图 > 个性化 IDP > 培训推荐 > 法规库 24h 更新 > 合同模板匹配 > 补偿金计算 > 合规审计 > 风险预警</div></div>
+<div class="jdc-arr">→</div>
+<div class="jdc-hu"><div class="jdc-label">人决策</div><div class="jdc-text">审批绩效方向，确认关键人才，确认审计结果</div></div>
+</div>
+<div class="jdc-skills-label">Skills 模块</div><div class="jdc-skills"><span>绩效方法论推荐</span><span>目标拆解引擎</span><span>指标库生成</span><span>绩效流程编排</span><span>SMART校验</span><span>360评估引擎</span><span>人才九宫格引擎</span><span>离职风险模型</span><span>继任计划生成</span><span>IDP生成引擎</span><span>培训课程匹配</span><span>法规库实时更新</span><span>合同生成引擎</span><span>补偿金精算</span><span>合规审计引擎</span><span>风险预警推送</span></div>
+</div></div>
+</div>
+
+<div class="jp" onclick="tj(this)">
+<span class="jp-dot" style="background:var(--p)">4</span>
+<div class="jl">Phase 4 · 规模化期</div>
+<h3>数据驱动 + 制度体系 + 文化沉淀 <span class="ja">v</span></h3>
+<div class="jd">投资人说"你人效怎么样"答不上来，准备 IPO 但制度不全，一年从 40 人到 170 人老员工说"味道变了"。</div>
+<div class="ja2"><span>数据驾驶舱</span><span>制度生成</span><span>SOP引擎</span><span>文化诊断</span></div>
+<div class="jdet"><div class="jdc">
+<div class="jdc-req"><div class="jdc-req-label">CEO 提出需求</div><div class="jdc-req-text">"尽调要数据答不上来，IPO 制度不完善，文化在稀释"</div></div>
+<div class="jdc-flow">
+<div class="jdc-ai"><div class="jdc-label">超级小i 执行</div><div class="jdc-text">多源数据归集 > CEO 驾驶舱 > NL 查询 > 异常检测 > 尽调报告 > AI 建议推送 > 6大制度手册 > SOP 引擎 > 审计就绪包 > 文化诊断 > Pulse 调研 > 雇主品牌内容</div></div>
+<div class="jdc-arr">→</div>
+<div class="jdc-hu"><div class="jdc-label">人决策</div><div class="jdc-text">解读数据，审批制度，方向把控</div></div>
+</div>
+<div class="jdc-skills-label">Skills 模块</div><div class="jdc-skills"><span>数据驾驶舱</span><span>NL查询引擎</span><span>异常检测模型</span><span>尽调报告生成</span><span>AI决策建议</span><span>数据归集引擎</span><span>制度文档生成</span><span>SOP流程引擎</span><span>审计文档打包</span><span>价值观构建</span><span>文化融入引擎</span><span>敬业度调研</span><span>雇主品牌内容</span><span>文化诊断报告</span></div>
+</div></div>
+</div>
+
+<div class="jp" onclick="tj(this)">
+<span class="jp-dot" style="background:var(--r)">5</span>
+<div class="jl">Phase 5 · 持续进化</div>
+<h3>全员智能服务 + 持续优化 <span class="ja">v</span></h3>
+<div class="jd">组织进入稳态运营。超级小i 7x24 为全员提供服务，同时基于数据持续迭代——每个 HR 事务都在不断优化。</div>
+<div class="ja2"><span>智能FAQ</span><span>数据看板</span><span>持续审计</span><span>文化运营</span></div>
+<div class="jdet"><div class="jdc">
+<div class="jdc-req"><div class="jdc-req-label">日常运营</div><div class="jdc-req-text">"查工资、开证明、问政策——7x24 随时问"</div></div>
+<div class="jdc-flow">
+<div class="jdc-ai"><div class="jdc-label">超级小i 执行</div><div class="jdc-text">全天候问答 > 证明开具 > 自助修改 > 政策解读 > 异常检测 > 报告推送 > 文化运营 > 合规审计 > 持续迭代</div></div>
+<div class="jdc-arr">→</div>
+<div class="jdc-hu"><div class="jdc-label">人聚焦</div><div class="jdc-text">战略决策，文化倡导，复杂判断</div></div>
+</div>
+<div class="jdc-skills-label">Skills 模块</div><div class="jdc-skills"><span>智能FAQ知识库</span><span>多轮对话Agent</span><span>证明自动开具</span><span>政策智能解读</span><span>数据驾驶舱</span><span>异常检测模型</span><span>AI决策建议</span><span>合规审计引擎</span><span>文化运营引擎</span></div>
+</div></div>
+</div>
+
+</div>
+<div style="text-align:center;margin-top:24px;padding:20px;background:linear-gradient(135deg,#e8f4fd,#f0e6f6);border-radius:var(--rl)">
+<p style="font-size:14px;color:var(--t2);line-height:1.7">超级小i 从 Day 1 开始陪伴企业成长——每个阶段自动解锁对应能力<br>我们先用内部验证，跑通后再输出给更多企业</p>
+</div>
+</div></section>
+
+<!-- ===== COLLAB ===== -->
+<section id="collab"><div class="c">
+<div class="sh"><div class="lb">Collaboration Model</div><h2>人机协作三级体系</h2><p>不是替代——是分级分工：系统做执行，人做决策</p></div>
+<table class="ctb">
+<thead><tr><th style="width:16%">级别</th><th style="width:30%">定义</th><th style="width:27%">超级小i 承担</th><th style="width:27%">人聚焦</th></tr></thead>
+<tbody>
+<tr><td class="l1">L1 系统执行</td><td>完全自动化</td><td>合同·入职·账号·薪酬核算·社保·证明·FAQ·数据归集</td><td>仅监控异常</td></tr>
+<tr><td class="l2">L2 建议+人决策</td><td>出方案出建议，人审批</td><td>组织方案·招聘匹配·Offer·绩效评估·九宫格·离职预测</td><td>审核方案，做选择题</td></tr>
+<tr><td class="l3">L3 辅助+人主导</td><td>提供数据弹药，人执行</td><td>谈判数据·面谈提纲·战略预测·文化诊断·合规报告</td><td>实际面谈，复杂判断</td></tr>
+</tbody>
+</table>
+<div style="text-align:center;margin-top:24px;padding:20px;background:var(--al);border-radius:var(--rm);max-width:700px;margin:24px auto 0">
+<p style="font-size:14px;color:var(--t2);line-height:1.7">让 HR 从 <strong style="color:var(--a)">流程执行者</strong> 升级为 <strong style="color:var(--a)">战略决策者</strong></p>
+</div>
+</div></section>
+
+<!-- ===== DATA ===== -->
+<section id="data" style="background:#fff;"><div class="c">
+<div class="sh"><div class="lb">Data Foundation</div><h2>业务执行即数据沉淀</h2><p>超级小i 做每件事的同时沉淀可信数据——随时提供查询、校验、汇总能力</p></div>
+<div class="dg">
+<div class="dc"><div class="svgi-d svgi" style="background:var(--a)"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/></svg></div><div class="dd"><h4>员工主数据</h4><p>入职/异动/离职时自动维护——档案、技能库、证书库实时更新</p></div></div>
+<div class="dc"><div class="svgi-d svgi" style="background:#5ac8fa"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg></div><div class="dd"><h4>组织岗位数据</h4><p>组织架构调整自动留存——岗位图谱、职级体系、编制变化有迹可循</p></div></div>
+<div class="dc"><div class="svgi-d svgi" style="background:var(--g)"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="8"/><path d="M12 8v8M8 12h8"/></svg></div><div class="dd"><h4>薪酬福利数据</h4><p>每次核算自然积累——薪酬架构、薪资历史、股权激励台账</p></div></div>
+<div class="dc"><div class="svgi-d svgi" style="background:#ff9500"><svg viewBox="0 0 24 24"><path d="M12 20V10"/><path d="M18 20V5"/><path d="M6 20v-4"/></svg></div><div class="dd"><h4>绩效数据</h4><p>目标>追踪>评定全程留痕——KPI 库、考核历史、360记录</p></div></div>
+<div class="dc"><div class="svgi-d svgi" style="background:var(--p)"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 3.6-7 8-7s8 3 8 7"/><path d="M20 4l2 2-2 2"/></svg></div><div class="dd"><h4>招聘数据</h4><p>需求分析>简历>Offer 全程积累候选人 Pipeline 和薪酬数据</p></div></div>
+<div class="dc"><div class="svgi-d svgi" style="background:var(--r)"><svg viewBox="0 0 24 24"><polygon points="12 2 15 9 22 9 16 14 18 21 12 17 6 21 8 14 2 9 9 9 12 2"/></svg></div><div class="dd"><h4>培训发展数据</h4><p>IDP>课程>学分——学习与发展轨迹自然累积</p></div></div>
+<div class="dc"><div class="svgi-d svgi" style="background:#8e8e93"><svg viewBox="0 0 24 24"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg></div><div class="dd"><h4>合规合同数据</h4><p>合同/续签/变更全留存，法规库自动更新——可追溯可审计</p></div></div>
+<div class="dc"><div class="svgi-d svgi" style="background:var(--a)"><svg viewBox="0 0 24 24"><path d="M4 4h16v16H4z"/><path d="M4 12h16"/><path d="M12 4v16"/></svg></div><div class="dd"><h4>分析决策数据</h4><p>所有数据域汇聚——人效看板、离职模型、成本分析随时就绪</p></div></div>
+</div>
+<div class="ds"><strong>核心能力：</strong>业务执行即数据沉淀，无需额外采集。<br><strong style="color:var(--t2)">管理者随时问：</strong>"Q2 人效？""哪个部门超编？""高潜绩效下滑？"——基于真实数据即刻回答。</div>
+</div></section>
+
+<!-- ===== ARCHITECTURE + ROADMAP COMBINED ===== -->
+<section id="arch-rm" class="ar-section"><div class="c">
+<div class="sh"><div class="lb">Architecture + Roadmap</div><h2>三层架构 + 三阶段路线</h2><p>场景层 · HR 知识层 · Skills 层，三阶段逐步构建</p></div>
+<div class="ar-grid">
+<div class="ar-left">
+<h3 style="font-size:17px;font-weight:700;margin-bottom:12px">三层智能架构</h3>
+<p style="font-size:13px;color:var(--t2);margin-bottom:16px;line-height:1.6">场景驱动 · HR 知识注入 · Skills 编排——在现有 HR 系统之上构建智能层</p>
+<div class="arch-flow">
+<div class="ab s1"><h4>场景层</h4><p>6 大场景族群<br>11 个场景模块<br>真实事件触发</p></div>
+<div class="aa">→</div>
+<div class="ab s2"><h4>HR 知识层</h4><p>15+ 角色领域知识<br>CHRO/HRBP/OD<br>TD/C&B/TA/ER/SSC</p></div>
+<div class="aa">→</div>
+<div class="ab s3"><h4>Skills 层</h4><p>50+ 原子化技能<br>灵活组合<br>多对多映射</p></div>
+</div>
+</div>
+<div class="ar-right">
+<h3 style="font-size:17px;font-weight:700;margin-bottom:12px">三阶段路线图</h3>
+<p style="font-size:13px;color:var(--t2);margin-bottom:16px;line-height:1.6">从内部验证到对外输出，逐步构建完整能力</p>
+<div class="rmg">
+<div class="rm cur">
+<div><span class="rm-p">NOW · Q3 2026</span></div>
+<div class="rm-body"><strong>内部验证期</strong> — 核心场景上线：合同·入职·薪酬·招聘。内部团队全面使用，积累真实案例数据</div>
+<div class="rm-goal">内部闭环</div>
+</div>
+<div class="rm nxt">
+<div><span class="rm-p">NEXT · Q4 2026</span></div>
+<div class="rm-body"><strong>产品打磨期</strong> — 新增绩效·人才·合规。开放集成层（飞书/钉钉/企微），3-5 家种子客户</div>
+<div class="rm-goal">验证 PMF</div>
+</div>
+<div class="rm ftr">
+<div><span class="rm-p">FUTURE · 2027</span></div>
+<div class="rm-body"><strong>对外输出期</strong> — 分层订阅制上线。渠道搭建·白皮书·行业发布·Skill 生态持续迭代</div>
+<div class="rm-goal">ARR > 0</div>
+</div>
+</div>
+</div>
+</div>
+</div></section>
+
+<div class="cta"><div class="c">
+<h2>让 HR 先行 AI 化<br>让企业先跑起来</h2>
+<p>从内部开始——先跑通自己的 AI Native 转型，再用产品服务更多企业</p>
+<a href="#" class="btn btn1">启动内部试点</a>
+<a href="#" class="btn btn2">了解详情</a>
+</div></div>
+<footer><div class="c"><p>超级小i · Internal Pitch · Confidential</p></div></footer>
+
+<script>
+function tc(e){e.classList.toggle('expanded')}
+function tj(e){e.classList.toggle('expanded')}
+function s(c){document.getElementById('scenarios').scrollIntoView({behavior:'smooth'})}
+const obs=new IntersectionObserver((e)=>{e.forEach(e=>{if(e.isIntersecting)e.target.classList.add('fi')})},{threshold:0.1});
+document.querySelectorAll('.capcat,.sc,.rm,.ab,.dc,.uc,.jp,.org-card').forEach(e=>{e.style.opacity='0';obs.observe(e)});
+</script>
+</body>
+</html>
